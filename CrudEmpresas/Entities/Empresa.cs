@@ -1,31 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CrudEmpresas.Entities;
-
-public partial class Empresa
+namespace CrudEmpresas.Entities
 {
-    public int Id { get; set; }
-
-    public string Logotipo { get; set; } = null!;
-
-    public string Firma { get; set; } = null!;
-
-    public string Nif { get; set; } = null!;
-
-    public int? Atividadeeconomicaid { get; set; }
-
-    public int? Tipoid { get; set; }
-
-    public DateOnly Abertura { get; set; }
-
-    public virtual Atividadeecomica? Atividadeeconomica { get; set; }
-
-    public virtual ICollection<Empresafilial> EmpresafilialAtividadeeconomicas { get; set; } = new List<Empresafilial>();
-
-    public virtual ICollection<Empresafilial> EmpresafilialEmpresas { get; set; } = new List<Empresafilial>();
-
-    public virtual ICollection<Empresasectoeconomico> Empresasectoeconomicos { get; set; } = new List<Empresasectoeconomico>();
-
-    public virtual Tipo? Tipo { get; set; }
+    [Table("empresa")]
+    public class Empresa
+    {
+        [Column("id")]
+        public int Id {get;set;}
+        [Column("firma")]
+        public string Firma {get;set;}
+        [Column("actividadeEconomicaId")]
+        public int ActividadeEconomicaId {get; set;}
+        [Column("logotipo")]
+        public string Logotipo {get; set;}
+        [Column("abertura")]
+        public DateOnly Abertura {get; set;}
+        [Column("ativo")]
+        public bool Ativo {get; set;}
+    }
 }
