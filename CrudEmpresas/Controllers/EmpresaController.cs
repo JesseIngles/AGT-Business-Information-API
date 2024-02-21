@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CrudEmpresas.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]/v1/")]
 public class EmpresaController : ControllerBase
 {
     private readonly ILogger<EmpresaController> _logger;
