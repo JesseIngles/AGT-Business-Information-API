@@ -18,8 +18,10 @@ namespace CrudEmpresas.DAL.CRepository
             try
             {
                 if(empresa == null)
+                {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
+                }
                 await _db.TbEmpresa.AddAsync(empresa);
                 await _db.SaveChangesAsync();
                 resposta.mensagem = "Sucesso";
