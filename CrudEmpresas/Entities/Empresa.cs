@@ -14,7 +14,7 @@ namespace CrudEmpresas.Entities
         [Column("logotipo")]
         public string Logotipo {get; set;}
         [Column("abertura")]
-        public DateOnly Abertura {get; set;}
+        public DateTime Abertura {get; set;}
         [Column("ativo")]
         public bool Ativo {get; set;}
     }
