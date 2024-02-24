@@ -18,10 +18,10 @@ public class EmpresaController : ControllerBase
     }
 
     [HttpPost(Name = "CriarEmpresa")]
-    public DTO_Resposta CriarEmpresa(Empresa empresa)
+    public async Task<DTO_Resposta> CriarEmpresa(Empresa empresa)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta = _empresa.CadastrarEmpresa(empresa).Result;
+        resposta = await _empresa.CadastrarEmpresa(empresa);
         return resposta;
     }
 
