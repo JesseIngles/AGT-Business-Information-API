@@ -26,7 +26,7 @@ public class EmpresaController : ControllerBase
     }
 
     [HttpPut(Name = "AtualizarEmpresa")]
-    public async Task<DTO_Reposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
+    public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = await _empresa.AtualizarEmpresa(empresa, id);

@@ -45,7 +45,7 @@ namespace CrudEmpresas.DAL.CRepository
                         var novoEmail = new EmpresaEmail
                         {
                             Email = item,
-                            Empresaid = _db.TbEmailEmpresa.Find(empresaExistente).select(x =>x.Id)
+                            Empresaid = _db.TbEmailEmpresa.Find(empresaExistente).Select(x =>x.Id)
                         };
                         await _db.TbEmailEmpresa.AddAsync(novoEmail);
                         _db.SaveChanges();
