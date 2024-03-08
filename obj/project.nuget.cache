@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "grbpCkGZ3VlrcD6zHSDLamTso9k7xsD7Hn2LTnHwdrQpMrqIWCHpaKCde5HEcjp5t8H+XwQRCGvaYqRB563g1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
+=======
+  "dgSpecHash": "bjk7awEgi+trZ/nLUikVlnDQPXt9CK4qx3+96bB9vAlcJty3hhkHpmgGMyKjhamI8Puw7e/GYCKpGyXJoL816w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
+>>>>>>> da2cadce1e04c842ceba1daca5b5a9ae5790b6f0
   "expectedPackageFiles": [
     "C:\\Users\\joeli\\.nuget\\packages\\fuzzysharp\\2.0.2\\fuzzysharp.2.0.2.nupkg.sha512",
     "C:\\Users\\joeli\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -52,5 +58,16 @@
     "C:\\Users\\joeli\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
     "C:\\Users\\joeli\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
   ],
+<<<<<<< HEAD
   "logs": []
+=======
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
+>>>>>>> da2cadce1e04c842ceba1daca5b5a9ae5790b6f0
 }
