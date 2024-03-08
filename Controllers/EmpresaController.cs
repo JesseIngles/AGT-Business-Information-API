@@ -33,4 +33,12 @@ public class EmpresaController : ControllerBase
         return resposta;
     }
     */
+
+    [HttpGet(Name = "PesquisarEmpresa")]
+    public DTO_Resposta PesquisarEmpresa(string consulta)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = _empresa.PesquisarEmpresa(consulta);
+        return resposta;
+    }
 }

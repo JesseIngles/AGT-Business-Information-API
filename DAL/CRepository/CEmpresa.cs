@@ -3,6 +3,7 @@ using CrudEmpresas.DAL.IRepository;
 using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
 using CrudEmpresas.Services;
+using FuzzySharp;
 
 namespace CrudEmpresas.DAL.CRepository
 {
@@ -70,6 +71,15 @@ namespace CrudEmpresas.DAL.CRepository
             {
                 resposta.mensagem = ex.ToString();
             }
+            return resposta;
+        }
+
+        public DTO_Resposta PesquisarEmpresa(string consulta)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            var EmpresasExistentes = _db.TbEmpresa.ToList();
+            var resultados = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Firma) });
+            resposta.resposta = resultados;
             return resposta;
         }
     }
