@@ -1,6 +1,7 @@
 using CrudEmpresas.DAL.IRepository;
 using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrudEmpresas.Controllers;
@@ -16,7 +17,7 @@ public class EmpresaController : ControllerBase
         _logger = logger;
         _empresa = empresa;
     }
-
+    [Authorize("RequiredClaims")]
     [HttpPost(Name = "CriarEmpresa")]
     public async Task<DTO_Resposta> CriarEmpresa(DTO_Empresa empresa)
     {
@@ -33,7 +34,7 @@ public class EmpresaController : ControllerBase
         return resposta;
     }
     */
-
+    [AllowAnonymous]
     [HttpGet(Name = "PesquisarEmpresa")]
     public DTO_Resposta PesquisarEmpresa(string consulta)
     {
