@@ -5,7 +5,7 @@ namespace CrudEmpresas.DAL.Database;
 
 public class MyDbContext : DbContext
 {
-    public string Stringconexao = "HOST=localhost; port=5434;" +
+    private static string Stringconexao = "HOST=localhost; port=5434;" +
                                 "Username=postgres; Database=EmpresaDb;password=1234";
     public DbSet<Empresa> TbEmpresa { get; set; }
     public DbSet<EmpresaEmail> TbEmailEmpresa {get;set;}
