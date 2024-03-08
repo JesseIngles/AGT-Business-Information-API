@@ -13,28 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CrudEmpresas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD:CrudEmpresas/obj/Debug/net8.0/CrudEmpresas.AssemblyInfo.cs
-<<<<<<< HEAD
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac56e74c97c38ddf2cf0999ce89ffeedda9c2b1d")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a95e45b0fa0936f8b9eb644906fbd134848ca77c")]
->>>>>>> Jesse
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b27d3aa1895baf8f5cfd031b000ed7970f6aa209")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e4a9a977ed39d06788b3759b2075db8040aea93")]
-=======
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a65e2df41e7dfa40cc70f502c0ed340c9567dd3d")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a95e45b0fa0936f8b9eb644906fbd134848ca77c")]
->>>>>>> Jesse
->>>>>>> Olivia
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c2a41977458e6a75141cfce4ba6b45b7eabb937")]
->>>>>>> Edna
->>>>>>> Jesse:obj/Debug/net8.0/CrudEmpresas.AssemblyInfo.cs
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dbd60df4433b15dee23a159e375b3caac56f1f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CrudEmpresas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CrudEmpresas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
