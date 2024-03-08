@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QpbbH7D5aFHuqVS+hq420AV/HzMQLN7XXBK5bdRzKaukULmtRUgl//65iWtUArEwfskYlGhLzB5i1LNn1xMzHQ==",
+  "dgSpecHash": "grbpCkGZ3VlrcD6zHSDLamTso9k7xsD7Hn2LTnHwdrQpMrqIWCHpaKCde5HEcjp5t8H+XwQRCGvaYqRB563g1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\joeli\\.nuget\\packages\\fuzzysharp\\2.0.2\\fuzzysharp.2.0.2.nupkg.sha512",
     "C:\\Users\\joeli\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\joeli\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\joeli\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
@@ -51,5 +52,12 @@
     "C:\\Users\\joeli\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
     "C:\\Users\\joeli\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
