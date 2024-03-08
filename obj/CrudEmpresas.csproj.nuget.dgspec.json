@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
         "packagesPath": "C:\\Users\\joeli\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\obj\\",
-=======
-    "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
-        "projectName": "CrudEmpresas",
-        "projectPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
-        "packagesPath": "C:\\Users\\elian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\obj\\",
->>>>>>> da2cadce1e04c842ceba1daca5b5a9ae5790b6f0
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
