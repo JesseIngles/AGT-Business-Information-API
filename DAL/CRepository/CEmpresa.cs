@@ -73,6 +73,42 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
+    } 
+    public AtualixarEmpresa()
+    {
+    Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
+    {
+         DTO_Actualizar = new DTO_Atualizar();
+         try 
+         {
+             TbEmpresa empresa = _db.TbEmpresa.FirstOrDeafult(c => c.Id == id);
+         }
+         
+                if (empresa != null)
+                {
+                    id = empresa.id,
+                    nome = empresa.nome,
+                    RegimeId = empresa.RegimeId,
+                    EnderecoId = empresa.EnderecoId
+                     
+                     _db.SaveChanges();
+                     resposta.mensagem = "Dados atualizados com sucesso";
+                    return resposta;
+
+                };
+                  else
+                {
+                    resposta.resposta = "Empresa não encontrada";
+                    resposta.mensagem = "Não foi possível encontrar a empresa para edição";
+                }
+            }
+            catch (Exception ex)
+            {
+                resposta.resposta = ex.Message;
+                resposta.mensagem = "Não foi possível concluir a operação com sucesso";
+            }
+                        return resposta;
+    }
     }
     public DTO_Resposta PesquisarEmpresa(string consulta)
     {
@@ -82,5 +118,3 @@ namespace CrudEmpresas.DAL.CRepository
         resposta.resposta = resultados;
         return resposta;
     }
-
-}
