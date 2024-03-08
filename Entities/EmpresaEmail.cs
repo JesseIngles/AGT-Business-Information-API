@@ -11,5 +11,6 @@ namespace CrudEmpresas.Entities
         [Column("email")]
         public string Email {get;set;}
         [Column("empresaid")]
+        public int EmpresaId {get;set;}
     }
 }

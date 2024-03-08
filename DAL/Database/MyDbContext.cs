@@ -9,6 +9,7 @@ public class MyDbContext : DbContext
                                 "Username=postgres; Database=EmpresaDb;password=1234";
     public DbSet<Empresa> TbEmpresa { get; set; }
     public DbSet<EmpresaEmail> TbEmailEmpresa {get;set;}
+    public DbSet<EmpresaTelefone> TbTelefoneEmpresa {get;set;}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql(Stringconexao);
 }
