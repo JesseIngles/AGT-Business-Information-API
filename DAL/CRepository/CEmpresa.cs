@@ -24,7 +24,7 @@ namespace CrudEmpresas.DAL.CRepository
                     Firma = empresa.Firma,
                     Nif = empresa.Nif,
                     DataFundacao = empresa.DataFundacao,
-                    Logotipo = ConverterImagemService.ConverterParaBase64(empresa.Logotipo),
+                    Logotipo = ConverterImagemService.UploadFoto(empresa.Logotipo),
                     Ativo = empresa.Ativo,
                     SectorEconomicoId = empresa.SectorEconomicoId,
                     AtividadeEconomicaId = empresa.AtividadeEconomicaId,
@@ -73,14 +73,72 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+        public DTO_Resposta PesquisarEmpresa(string consulta)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            var EmpresasExistentes = _db.TbEmpresa.ToList();
+            var resultados = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Firma) });
+            resposta.resposta = resultados;
+            return resposta;
+        }
+=======
+        public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
+>>>>>>> Olivia
+=======
+    } 
+   
+       public DTO_Resposta AtualizarEmpresa(DTO_Empresa empresa, int id,MyDbContext _db)
+         {
+               DTO_Resposta  resposta  = new DTO_Resposta();
+         try 
+         {
+              TbEmpresa tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
+             
+                if (tbempresaexistente != null)
+                {
+                    id = tbempresaexistente.id;
+                     _db.SaveChanges();
+                     resposta.mensagem = "Dados atualizados com sucesso";
+                    return resposta;
+
+                }
+                  else
+                {
+                    resposta.resposta = "modelo não encontrada";
+                    resposta.mensagem = "Não foi possível encontrar a modelo para edição";
+                }
+            }
+            catch (Exception ex)
+            {
+                resposta.resposta = ex.Message;
+                resposta.mensagem = "Não foi possível concluir a operação com sucesso";
+            }
+                        return resposta;
     }
-    public DTO_Resposta PesquisarEmpresa(string consulta)
+                     
+    
+    public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
+>>>>>>> Elly
     {
         DTO_Resposta resposta = new DTO_Resposta();
         var EmpresasExistentes = _db.TbEmpresa.ToList();
         var resultados = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Nome) });
         resposta.resposta = resultados;
         return resposta;
+<<<<<<< HEAD
+>>>>>>> Elly
+=======
+>>>>>>> Olivia
     }
+<<<<<<< HEAD
 
+          }
+          
+        }
+            
+=======
 }
+>>>>>>> Elly
