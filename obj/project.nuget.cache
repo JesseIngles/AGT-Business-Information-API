@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "grbpCkGZ3VlrcD6zHSDLamTso9k7xsD7Hn2LTnHwdrQpMrqIWCHpaKCde5HEcjp5t8H+XwQRCGvaYqRB563g1A==",
-=======
   "dgSpecHash": "Lljf42I3FlXnbTBNelpP5TkvLF53IJ0QhWpn8dnvbefl28mp01zfRJRKZbgXRW0miHBCV9WRlXEhMSovxlAotA==",
->>>>>>> Jesse
   "success": true,
   "projectFilePath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
   "expectedPackageFiles": [
