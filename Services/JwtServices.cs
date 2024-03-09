@@ -7,7 +7,7 @@ public class JwtService
     {
         _config = configuration;
     }
-    public string GerarTokenAgente()
+    public static string GerarTokenAgente()
     {
         string resposta = string.Empty;
         

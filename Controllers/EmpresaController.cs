@@ -33,8 +33,7 @@ public class EmpresaController : ControllerBase
         resposta = await _empresa.AtualizarEmpresa(empresa, id);
         return resposta;
     }
-<<<<<<< HEAD
-    */
+    
     [AllowAnonymous]
     [HttpGet(Name = "PesquisarEmpresa")]
     public DTO_Resposta PesquisarEmpresa(string consulta)
@@ -43,7 +42,4 @@ public class EmpresaController : ControllerBase
         resposta = _empresa.PesquisarEmpresa(consulta);
         return resposta;
     }
-=======
-    
->>>>>>> Elly
 }
