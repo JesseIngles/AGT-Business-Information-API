@@ -14,6 +14,8 @@ public class MyDbContext : DbContext
     public DbSet<Funcionario> TbFuncionario {get;set;}
     public DbSet<FuncionarioEmail> TbFuncionarioEmail {get;set;}
     public DbSet<EmpresaFuncionario> TbEmpresaFuncionario {get;set;}
+    public DbSet<Agente> TbAgente { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 <<<<<<< HEAD
         => optionsBuilder.UseNpgsql("HOST=localhost; port=5434;" +

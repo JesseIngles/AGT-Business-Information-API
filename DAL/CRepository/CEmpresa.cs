@@ -75,6 +75,7 @@ namespace CrudEmpresas.DAL.CRepository
         }
 <<<<<<< HEAD
 
+<<<<<<< HEAD
         public DTO_Resposta PesquisarEmpresa(string consulta)
         {
             DTO_Resposta resposta = new DTO_Resposta();
@@ -83,6 +84,9 @@ namespace CrudEmpresas.DAL.CRepository
             resposta.resposta = resultados;
             return resposta;
         }
+=======
+        public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
+>>>>>>> Olivia
 =======
     } 
    
@@ -117,12 +121,24 @@ namespace CrudEmpresas.DAL.CRepository
                      
     
     public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
+>>>>>>> Elly
     {
         DTO_Resposta resposta = new DTO_Resposta();
         var EmpresasExistentes = _db.TbEmpresa.ToList();
         var resultados = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Nome) });
         resposta.resposta = resultados;
         return resposta;
+<<<<<<< HEAD
 >>>>>>> Elly
+=======
+>>>>>>> Olivia
     }
+<<<<<<< HEAD
+
+          }
+          
+        }
+            
+=======
 }
+>>>>>>> Elly
