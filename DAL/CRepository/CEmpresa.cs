@@ -76,6 +76,11 @@ namespace CrudEmpresas.DAL.CRepository
 <<<<<<< HEAD
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
+=======
+>>>>>>> 341f557ca36b9debe9b74c9a6b4b9dd61c44350e
         public DTO_Resposta PesquisarEmpresa(string consulta)
         {
             DTO_Resposta resposta = new DTO_Resposta();
@@ -84,9 +89,16 @@ namespace CrudEmpresas.DAL.CRepository
             resposta.resposta = resultados;
             return resposta;
         }
+<<<<<<< HEAD
 =======
         public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
 >>>>>>> Olivia
+=======
+<<<<<<< HEAD
+>>>>>>> Jesse
+=======
+>>>>>>> edna
+>>>>>>> 341f557ca36b9debe9b74c9a6b4b9dd61c44350e
 =======
     } 
    
@@ -129,9 +141,19 @@ namespace CrudEmpresas.DAL.CRepository
         resposta.resposta = resultados;
         return resposta;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Elly
 =======
 >>>>>>> Olivia
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Elly
+>>>>>>> Jesse
+=======
+>>>>>>> Elly
+>>>>>>> edna
+>>>>>>> 341f557ca36b9debe9b74c9a6b4b9dd61c44350e
     }
 <<<<<<< HEAD
 
