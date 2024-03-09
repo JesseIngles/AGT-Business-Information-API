@@ -85,6 +85,7 @@ namespace CrudEmpresas.DAL.CRepository
                 if (tbempresaexistente != null)
                 {
                     id = tbempresaexistente.id;
+                    
                      _db.SaveChanges();
                      resposta.mensagem = "Dados atualizados com sucesso";
                     return resposta;
