@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "grbpCkGZ3VlrcD6zHSDLamTso9k7xsD7Hn2LTnHwdrQpMrqIWCHpaKCde5HEcjp5t8H+XwQRCGvaYqRB563g1A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
+=======
   "dgSpecHash": "XcXbF9L+08i1pv5Bz59oTkKswCKg3gVV2LlevkN+fc2s9oApbp2sYJONAqwYIG9IrCc69dAJG6ygkOVTPXc28Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
+>>>>>>> Elly
   "expectedPackageFiles": [
     "C:\\Users\\elian\\.nuget\\packages\\fuzzysharp\\2.0.2\\fuzzysharp.2.0.2.nupkg.sha512",
     "C:\\Users\\elian\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -57,7 +63,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Problem reading the cache file C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
 }
