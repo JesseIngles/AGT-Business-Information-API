@@ -73,8 +73,39 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
+    } 
+   
+       public DTO_Resposta AtualizarEmpresa(DTO_Empresa empresa, int id,MyDbContext _db)
+         {
+               DTO_Resposta  resposta  = new DTO_Resposta();
+         try 
+         {
+              TbEmpresa tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
+             
+                if (tbempresaexistente != null)
+                {
+                    id = tbempresaexistente.id;
+                     _db.SaveChanges();
+                     resposta.mensagem = "Dados atualizados com sucesso";
+                    return resposta;
+
+                }
+                  else
+                {
+                    resposta.resposta = "modelo não encontrada";
+                    resposta.mensagem = "Não foi possível encontrar a modelo para edição";
+                }
+            }
+            catch (Exception ex)
+            {
+                resposta.resposta = ex.Message;
+                resposta.mensagem = "Não foi possível concluir a operação com sucesso";
+            }
+                        return resposta;
     }
-    public DTO_Resposta PesquisarEmpresa(string consulta)
+                     
+    
+    public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         var EmpresasExistentes = _db.TbEmpresa.ToList();
@@ -82,5 +113,4 @@ namespace CrudEmpresas.DAL.CRepository
         resposta.resposta = resultados;
         return resposta;
     }
-
 }
