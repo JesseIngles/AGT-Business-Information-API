@@ -1,17 +1,16 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace CrudEmpresas.Entities
 {
 
-    [Table("tipoEmpresa")]
-    public class  tipoEmpresa{
 
-    
+ [Table("cargo")]
+    public class Cargo
+    {
         [Column("id")]
-        public int id {get;set;}
+        public int Id {get;set;}
         [Column("nome")]
-        public string nome{get;set;}
-      
+        public string nome {get;set;}
+
     }
-}
+        }

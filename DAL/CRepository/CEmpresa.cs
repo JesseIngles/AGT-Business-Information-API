@@ -24,7 +24,7 @@ namespace CrudEmpresas.DAL.CRepository
                     Firma = empresa.Firma,
                     Nif = empresa.Nif,
                     DataFundacao = empresa.DataFundacao,
-                    Logotipo = ConverterImagemService.ConverterParaBase64(empresa.Logotipo),
+                    Logotipo = ConverterImagemService.UploadFoto(empresa.Logotipo),
                     Ativo = empresa.Ativo,
                     SectorEconomicoId = empresa.SectorEconomicoId,
                     AtividadeEconomicaId = empresa.AtividadeEconomicaId,
@@ -73,18 +73,17 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
-    } 
-   
+
        public DTO_Resposta AtualizarEmpresa(DTO_Empresa empresa, int id,MyDbContext _db)
          {
                DTO_Resposta  resposta  = new DTO_Resposta();
          try 
          {
-              TbEmpresa tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
+              var tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
              
                 if (tbempresaexistente != null)
                 {
-                    id = tbempresaexistente.id;
+                    
                     
                      _db.SaveChanges();
                      resposta.mensagem = "Dados atualizados com sucesso";
@@ -106,12 +105,19 @@ namespace CrudEmpresas.DAL.CRepository
     }
                      
     
-    public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
+        public  DTO_Resposta PesquisarEmpresa(string consulta)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         var EmpresasExistentes = _db.TbEmpresa.ToList();
         var resultados = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Nome) });
         resposta.resposta = resultados;
         return resposta;
+
     }
-}
+
+
+          }
+          
+} 
+            
+

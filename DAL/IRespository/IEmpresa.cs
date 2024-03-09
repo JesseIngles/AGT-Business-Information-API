@@ -9,4 +9,5 @@ public interface IEmpresa
     Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id);
     Task <DTO_Resposta> PesquisarEmpresa(string consulta);
     
+
 }
