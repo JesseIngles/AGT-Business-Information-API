@@ -5,8 +5,7 @@ namespace CrudEmpresas.DAL.Database;
 
 public class MyDbContext : DbContext
 {
-    public string Stringconexao = "HOST=localhost; port=5434;" +
-                                "Username=postgres; Database=EmpresaDb;password=1234";
+
     public DbSet<Empresa> TbEmpresa { get; set; }
     public DbSet<EmpresaEmail> TbEmailEmpresa {get;set;}
     public DbSet<EmpresaTelefone> TbTelefoneEmpresa {get;set;}
@@ -18,10 +17,15 @@ public class MyDbContext : DbContext
     public DbSet<Agente> TbAgente { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+<<<<<<< HEAD
+        => optionsBuilder.UseNpgsql("HOST=localhost; port=5434;" +
+                                "Username=postgres; Database=EmpresaDb;password=1234");
+=======
         => optionsBuilder.UseNpgsql(Stringconexao);
 
     internal void firstOrDefault(Func<object, bool> value)
     {
         throw new NotImplementedException();
     }
+>>>>>>> Elly
 }
