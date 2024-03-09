@@ -219,3 +219,12 @@ C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.sourcelin
 C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.dll
 C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\refint\CrudEmpresas.dll
 C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.pdb
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\FuzzySharp.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
