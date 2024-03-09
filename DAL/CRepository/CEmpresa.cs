@@ -24,7 +24,7 @@ namespace CrudEmpresas.DAL.CRepository
                     Firma = empresa.Firma,
                     Nif = empresa.Nif,
                     DataFundacao = empresa.DataFundacao,
-                    Logotipo = ConverterImagemService.ConverterParaBase64(empresa.Logotipo),
+                    Logotipo = ConverterImagemService.UploadFoto(empresa.Logotipo),
                     Ativo = empresa.Ativo,
                     SectorEconomicoId = empresa.SectorEconomicoId,
                     AtividadeEconomicaId = empresa.AtividadeEconomicaId,
