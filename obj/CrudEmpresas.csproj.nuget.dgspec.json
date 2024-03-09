@@ -2,14 +2,23 @@
   "format": 1,
   "restore": {
 <<<<<<< HEAD
+    "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj": {}
+=======
+<<<<<<< HEAD
     "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj": {}
+>>>>>>> Elly
   },
   "projects": {
-    "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj": {
+    "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
+        "projectUniqueName": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
         "projectName": "CrudEmpresas",
+<<<<<<< HEAD
+        "projectPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
+        "packagesPath": "C:\\Users\\elian\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\obj\\",
+=======
         "projectPath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
         "packagesPath": "C:\\Users\\joeli\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\obj\\",
@@ -25,6 +34,7 @@
         "projectPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
         "packagesPath": "C:\\Users\\elian\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\obj\\",
+>>>>>>> Elly
 >>>>>>> Elly
         "projectStyle": "PackageReference",
         "fallbackFolders": [

@@ -86,7 +86,10 @@ namespace CrudEmpresas.DAL.CRepository
             resposta.resposta = resultados;
             return resposta;
         }
+<<<<<<< HEAD
 >>>>>>> Jesse
+=======
+>>>>>>> edna
 =======
     } 
    
@@ -129,9 +132,13 @@ namespace CrudEmpresas.DAL.CRepository
         resposta.resposta = resultados;
         return resposta;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Elly
 >>>>>>> Jesse
+=======
+>>>>>>> Elly
+>>>>>>> edna
     }
 <<<<<<< HEAD
 

@@ -3020,6 +3020,13 @@
     "version": "1.0.0",
     "restore": {
 <<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
+      "projectName": "CrudEmpresas",
+      "projectPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
+      "packagesPath": "C:\\Users\\elian\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\obj\\",
+=======
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
       "projectName": "CrudEmpresas",
       "projectPath": "C:\\Users\\joeli\\Desktop\\GirassolProjects\\CrudEmpresas\\CrudEmpresas.csproj",
@@ -3031,6 +3038,7 @@
       "projectPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\CrudEmpresas.csproj",
       "packagesPath": "C:\\Users\\elian\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\elian\\OneDrive\\CRUD-de-Empresas\\obj\\",
+>>>>>>> Elly
 >>>>>>> Elly
       "projectStyle": "PackageReference",
       "fallbackFolders": [

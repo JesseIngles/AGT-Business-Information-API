@@ -15,6 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a3c3dad1f542f1e1d326f4a0dd16ddf276d3f52d")]
@@ -22,6 +23,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84a3be8a5fe75ffd17a9ef82573c110a5a0855d0")]
 >>>>>>> Elly
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7d2692348b58e6c06526953d2e9d584ae2c585a")]
+>>>>>>> edna
 [assembly: System.Reflection.AssemblyProductAttribute("CrudEmpresas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CrudEmpresas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
