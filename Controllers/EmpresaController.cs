@@ -29,7 +29,7 @@ public class EmpresaController : ControllerBase
     public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta = await _empresa.(empresa, id);
+        resposta = await _empresa.AtualizarEmpresa(empresa, id);
         return resposta;
     }
     

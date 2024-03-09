@@ -74,32 +74,26 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
     } 
-    public AtualixarEmpresa()
-    {
-    Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
-    {
-         DTO_Actualizar = new DTO_Atualizar();
+   
+       public DTO_Resposta AtualizarEmpresa(DTO_Empresa empresa, int id,MyDbContext _db)
+         {
+               DTO_Resposta  resposta  = new DTO_Resposta();
          try 
          {
-             TbEmpresa empresa = _db.TbEmpresa.FirstOrDeafult(c => c.Id == id);
-         }
-         
-                if (empresa != null)
+              TbEmpresa tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
+             
+                if (tbempresaexistente != null)
                 {
-                    id = empresa.id,
-                    nome = empresa.nome,
-                    RegimeId = empresa.RegimeId,
-                    EnderecoId = empresa.EnderecoId
-                     
+                    id = tbempresaexistente.id;
                      _db.SaveChanges();
                      resposta.mensagem = "Dados atualizados com sucesso";
                     return resposta;
 
-                };
+                }
                   else
                 {
-                    resposta.resposta = "Empresa não encontrada";
-                    resposta.mensagem = "Não foi possível encontrar a empresa para edição";
+                    resposta.resposta = "modelo não encontrada";
+                    resposta.mensagem = "Não foi possível encontrar a modelo para edição";
                 }
             }
             catch (Exception ex)
@@ -109,8 +103,9 @@ namespace CrudEmpresas.DAL.CRepository
             }
                         return resposta;
     }
-    }
-    public DTO_Resposta PesquisarEmpresa(string consulta)
+                     
+    
+    public  DTO_Resposta PesquisarEmpresa(string consulta, string consulta)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         var EmpresasExistentes = _db.TbEmpresa.ToList();
@@ -118,3 +113,4 @@ namespace CrudEmpresas.DAL.CRepository
         resposta.resposta = resultados;
         return resposta;
     }
+}
