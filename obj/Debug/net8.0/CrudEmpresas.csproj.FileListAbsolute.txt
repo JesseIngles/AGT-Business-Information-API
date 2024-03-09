@@ -208,3 +208,14 @@ C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\obj\Debug\net8.0\scopedcss\
 C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\obj\Debug\net8.0\CrudEmpr.07AC611A.Up2Date
 C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\obj\Debug\net8.0\CrudEmpresas.genruntimeconfig.cache
 C:\Users\joeli\Desktop\GirassolProjects\CrudEmpresas\obj\Debug\net8.0\ref\CrudEmpresas.dll
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.csproj.AssemblyReference.cache
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.AssemblyInfoInputs.cache
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.AssemblyInfo.cs
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.csproj.CoreCompileInputs.cache
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.sourcelink.json
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.dll
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\refint\CrudEmpresas.dll
+C:\Users\elian\OneDrive\CRUD-de-Empresas\obj\Debug\net8.0\CrudEmpresas.pdb

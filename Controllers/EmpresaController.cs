@@ -24,14 +24,15 @@ public class EmpresaController : ControllerBase
         resposta = await _empresa.CadastrarEmpresa(empresa);
         return resposta;
     }
-    //Atualizar 
-    /*[HttpPut(Name = "AtualizarEmpresa")]
+ 
+    [HttpPut(Name = "AtualizarEmpresa")]
     public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta = await _empresa.(empresa, id);
+        resposta = await _empresa.AtualizarEmpresa(empresa, id);
         return resposta;
     }
+<<<<<<< HEAD
     */
 
     [HttpGet(Name = "PesquisarEmpresa")]
@@ -41,4 +42,7 @@ public class EmpresaController : ControllerBase
         resposta = _empresa.PesquisarEmpresa(consulta);
         return resposta;
     }
+=======
+    
+>>>>>>> Elly
 }
