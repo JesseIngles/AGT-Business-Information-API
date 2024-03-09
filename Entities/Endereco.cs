@@ -3,11 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CrudEmpresas.Entities
 {
-
     [Table("endereco")]
     public class endereco{
-
-    
         [Column("id")]
         public int id {get;set;}
         [Column("pais")]
@@ -22,10 +19,5 @@ namespace CrudEmpresas.Entities
         public string rua {get;set;}
         [Column("ncasa")]
         public int ncasa {get;set;}
-       
-        
-        
-        
-      
     }
 }

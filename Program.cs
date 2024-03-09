@@ -10,13 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddTransient<MyDbContext>();
 builder.Services.AddTransient<IEmpresa, CEmpresa>();
+builder.Services.AddTransient<IAgente, CAgente>();
+builder.Services.AddTransient<IFuncionario, CFuncionario>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "DVJ", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CRUD_EMPRESAS", Version = "v1" });
     // Adicionar o campo para inserir o token
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -71,7 +73,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-builder.Services.AddAuthorization(
+/*builder.Services.AddAuthorization(
     options =>
     {
         options.AddPolicy("RequiredClaims", policy =>
@@ -79,7 +81,7 @@ builder.Services.AddAuthorization(
             policy.RequireClaim("Senha");
         });
     }
-);
+);*/ 
 app.MapControllers();
 
 app.Run();

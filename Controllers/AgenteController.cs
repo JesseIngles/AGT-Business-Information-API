@@ -11,7 +11,7 @@ public class AgenteController : ControllerBase
 {
     private readonly ILogger<AgenteController> _logger;
     private readonly IAgente _agente;
-    public AgenteController(ILogger<EmpresaController> logger, IAgente agente)
+    public AgenteController(ILogger<AgenteController> logger, IAgente agente)
     {
         _logger = logger;
         _agente = agente;

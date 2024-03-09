@@ -15,52 +15,75 @@ namespace CrudEmpresas.DAL.CRepository
         {
             _db = context;
         }
+
+        public async Task<DTO_Resposta> AtualizarAgente(DTO_Agente agente, int id)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var AgenteExistente = _db.TbAgente.First(a => a.Id == id);
+                if (AgenteExistente != null)
+                {
+                    AgenteExistente.Nif = agente.Nif;
+                    AgenteExistente.Nome = agente.Nome;
+                    AgenteExistente.Senha = agente.senha;
+                    await _db.SaveChangesAsync();
+                    resposta.mensagem = "Sucesso";
+                    return resposta;
+                }
+                resposta.mensagem = "Não existe";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+
         public async Task<DTO_Resposta> CadastrarAgente(DTO_Agente agente)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var agenteExistente = new Empresa
+                var agentes = _db.TbAgente.ToList();
+                var NovoAgente = new Agente
                 {
-                    Id = Agente.Id
-                    Nif = Agente.Nif,
-                    Nome = Agente.Nome,
-                    Ativo = Agente.Ativo,
-                    Senha= Agente.Senha,
-                    isAdmin = Agente.isAdmin,
-                     
-                    
+                    Nome = agente.Nome,
+                    Senha = agente.senha,
+                    Nif = agente.Nif,
+                    IsAdmin = (agentes.Count == 0) ? true : false,
+                    Ativo = false
                 };
-                if (AgenteExistente == null)
+                if (NovoAgente == null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
                 }
-                await _db.TbAgente.AddAsync(AgenteExistente);
+                await _db.TbAgente.AddAsync(NovoAgente);
                 _db.SaveChanges();
                 if (agente.Emails != null)
                 {
                     foreach (var item in agente.Emails)
                     {
-                        var novoEmail = new EmpresaEmail
+                        var novoEmail = new AgenteEmail
                         {
                             Email = item,
-                            EmpresaId = _db.TbAgente.Find(agenteExistente).Id
+                            AgenteId = _db.TbAgente.Find(NovoAgente).Id
                         };
-                        await _db.TbEmailEmpresa.AddAsync(novoEmail);
+                        await _db.TbAgenteEmail.AddAsync(novoEmail);
                         _db.SaveChanges();
                     }
                 }
-                if (empresa.Telefones != null)
+                if (agente.Telefones != null)
                 {
-                    foreach (var item in empresa.Telefones)
+                    foreach (var item in agente.Telefones)
                     {
-                        var novoTelefone = new EmpresaTelefone
+                        var novoTelefone = new AgenteTelefone
                         {
                             Telefone = item,
-                            EmpresaId = _db.TbEmpresa.Find(empresaExistente).Id
+                            AgenteId = _db.TbAgente.Find(NovoAgente).Id
                         };
-                        await _db.TbTelefoneEmpresa.AddAsync(novoTelefone);
+                        await _db.TbAgenteTelefone.AddAsync(novoTelefone);
                         _db.SaveChanges();
                     }
                 }
@@ -73,9 +96,27 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
-        
-
-          }
-          
+        public DTO_Resposta LogarAgente(DTO_Login login)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var AgenteExistente = _db.TbAgente.First(a => a.Nif == login.Nif
+                                                        && a.Senha == login.Senha);
+                if (AgenteExistente != null)
+                {
+                    resposta.resposta = JwtService.GerarTokenAgente();
+                    resposta.mensagem = "Sucesso";
+                }
+                resposta.mensagem = "Nif ou senha inválidos";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
         }
-            
+
+    }
+
+}

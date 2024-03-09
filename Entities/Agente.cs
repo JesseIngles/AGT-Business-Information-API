@@ -1,28 +1,25 @@
  using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CrudEmpresas.Entities
-
-
- [Table("agente")]
+{
+    [Table("agente")]
     public class Agente
     {
         [Column("id")]
         public int Id {get;set;}
         [Column("nome")]
-        public string nome {get;set;}
+        public string Nome {get;set;}
 
         [Column("senha")]
-        public int senha {get;set;}
+        public string Senha {get;set;}
         [Column("nif")]
-        public string nif {get;set;}
+        public string Nif {get;set;}
 
         [Column("isAdmin")]
-        public int isAdmin {get;set;}
+        public bool IsAdmin {get;set;}
 
         [Column("Ativo")]
-        public string Ativo {get;set;}
-    }
-
-    
-
+        public bool Ativo {get;set;} 
+    }  
+}
     

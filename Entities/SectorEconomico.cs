@@ -7,12 +7,9 @@ namespace CrudEmpresas.Entities
     [Table("sectorEconomico")]
     public class sectorEconomico
     {
-
-
         [Column("id")]
         public int id { get; set; }
         [Column("nome")]
         public string nome { get; set; }
-
     }
 }
