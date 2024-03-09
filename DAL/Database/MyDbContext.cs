@@ -19,4 +19,9 @@ public class MyDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql(Stringconexao);
+
+    internal void firstOrDefault(Func<object, bool> value)
+    {
+        throw new NotImplementedException();
+    }
 }
