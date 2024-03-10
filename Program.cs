@@ -1,6 +1,7 @@
 using CrudEmpresas.DAL.CRepository;
 using CrudEmpresas.DAL.Database;
 using CrudEmpresas.DAL.IRepository;
+using CrudEmpresas.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -12,8 +13,13 @@ builder.Services.AddTransient<MyDbContext>();
 builder.Services.AddTransient<IEmpresa, CEmpresa>();
 builder.Services.AddTransient<IAgente, CAgente>();
 builder.Services.AddTransient<IFuncionario, CFuncionario>();
+<<<<<<< HEAD
 builer.Services.AddTransient<IRegime, CRegime>()
 builer.Services.AddTransient<ICargo, CCargo>()
+=======
+builder.Services.AddTransient<IRegime, CRegime>();
+builder.Services.AddTransient<ISectorEconomico, CSectorEconomico>();
+>>>>>>> 5ef677ed0ccce53a5d5592b0e62a6828c049ad25
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

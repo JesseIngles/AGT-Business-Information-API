@@ -8,24 +8,23 @@ using FuzzySharp;
 
 namespace CrudEmpresas.DAL.CRepository
 {
-    public class CRegime : IRegime
+    public class CSectorEconomico : ISectorEconomico
     {
         private readonly MyDbContext _db;
-        public CRegime(MyDbContext context)
+        public CSectorEconomico(MyDbContext context)
         {
             _db = context;
         }
 
-<<<<<<< HEAD
-        public async Task<DTO_Resposta> AtualizarRegime(DTO_Regime regime, int id)
+        public async Task<DTO_Resposta> AtualizarSectorEconomico(DTO_SectorEconomico sectorEconomico, int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var RegimeExistente = _db.TbRegime.First(a => a.Id == id);
-                if (RegimeExistente != null)
+                var SectorEconomicoExistente = _db.TbSectorEconomico.First(a => a.Id == id);
+                if (SectorEconomicoExistente != null)
                 {
-                    RegimeExistente.Nome = regime.Nome;
+                    SectorEconomicoExistente.Nome = sectorEconomico.Nome;
                     await _db.SaveChangesAsync();
                     resposta.mensagem = "Sucesso";
                     return resposta;
@@ -39,41 +38,28 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
-        public async Task<DTO_Resposta> CadastrarRegime(DTO_Regime regime)
+        public async Task<DTO_Resposta> CadastrarSectorEconomico(DTO_SectorEconomico sectorEconomico)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var NovoRegime = new regime
+                
+                var NovoSectorEconomico = new SectorEconomico
                 {
-                    Nome = regime.Nome,
+                    Nome = sectorEconomico.Nome,
+                                        
                 };
-                if (NovoRegime == null)
+                if (NovoSectorEconomico == null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
                 }
-            
-                
-        
-        }
 
-    
-                
-            
-        }
-
-    }
-
-}
-=======
-        public Task<DTO_Resposta> CadastrarRegime()
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
-
+                         
+            }
+      }
+       }
+  }
        
                 
       
@@ -95,5 +81,4 @@ namespace CrudEmpresas.DAL.CRepository
             
                       
 
-       
->>>>>>> 5ef677ed0ccce53a5d5592b0e62a6828c049ad25
+                      

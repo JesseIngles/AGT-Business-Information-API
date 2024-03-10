@@ -5,7 +5,7 @@ namespace CrudEmpresas.Entities
 {
 
     [Table("sectorEconomico")]
-    public class sectorEconomico
+    public class SectorEconomico
     {
         [Column("id")]
         public int id { get; set; }
