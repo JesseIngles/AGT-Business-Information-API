@@ -1,7 +1,7 @@
 using CrudEmpresas.Entities;
 namespace CrudEmpresas.DTO
 {
-    public class DTOSectorEconomico
+    public class DTO_SectorEconomico
     {
         public string Nome { get; set; }    
     

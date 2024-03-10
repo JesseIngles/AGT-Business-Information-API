@@ -32,6 +32,14 @@ public class AgenteController : ControllerBase
         resposta = _agente.LogarAgente(login);
         return resposta;
     }
+
+    [HttpDelete(Name = "RemoverAgente")]
+    public async Task<DTO_Resposta> RemoverAgenter(int id)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = await _agente.RemoverAgente(id);
+        return resposta;
+    }
     
 
     

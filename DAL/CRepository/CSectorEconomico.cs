@@ -46,8 +46,7 @@ namespace CrudEmpresas.DAL.CRepository
                 
                 var NovoSectorEconomico = new SectorEconomico
                 {
-                    Nome = sectorEconomico.Nome,
-                                        
+                    Nome = sectorEconomico.Nome         
                 };
                 if (NovoSectorEconomico == null)
                 {
@@ -55,9 +54,12 @@ namespace CrudEmpresas.DAL.CRepository
                     return resposta;
                 }
 
-                         
+                       
+            }catch(Exception ex){
+
             }
-      }
+            return resposta;
+        }
        }
   }
        

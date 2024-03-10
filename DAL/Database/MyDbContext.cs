@@ -1,3 +1,4 @@
+using CrudEmpresas.DAL.CRepository;
 using CrudEmpresas.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,19 +21,7 @@ public class MyDbContext : DbContext
      public DbSet<SectorEconomico> TbSectorEconomico {get;set;}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-<<<<<<< HEAD
-
         => optionsBuilder.UseNpgsql("HOST=localhost; port=5434;" +
                                 "Username=postgres; Database=EmpresaDb;password=1234");
-        => optionsBuilder.UseNpgsql(Stringconexao);
 
-    internal void firstOrDefault(Func<object, bool> value)
-    {
-        throw new NotImplementedException();
-    }
-
-=======
-        => optionsBuilder.UseNpgsql("HOST=localhost; port=5434;" +
-                                "Username=postgres; Database=EmpresaDb;password=1234");
->>>>>>> 7e557ab7321498070d65e1dcb591417ba3872f83
 }
