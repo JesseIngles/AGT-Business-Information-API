@@ -24,6 +24,14 @@ public class AgenteController : ControllerBase
         resposta = await _agente.CadastrarAgente(agente);
         return resposta;
     }
+
+    [HttpPost(Name = "LogarAgente")]
+    public DTO_Resposta LogarAgente(DTO_Login login)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = _agente.LogarAgente(login);
+        return resposta;
+    }
     
 
     
