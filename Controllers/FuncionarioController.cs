@@ -1,4 +1,8 @@
-gitusing CrudEmpresas.DAL.IRepository;
+using CrudEmpresas.DAL.IRepository;
+using CrudEmpresas.DTO;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using CrudEmpresas.DAL.IRepository;
 using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -18,7 +22,7 @@ public class FuncionarioController : ControllerBase
         _funcionario = funcionario;
     }
     [Authorize("RequiredClaims")]
-    [HttpPost(Name = "AdicionarFuncionario")]
+    [HttpPost("AdicionarFuncionario")]
     public async Task<DTO_Resposta>  CadastrarFuncionario(DTO_Funcionario funcionario)
     {
         DTO_Resposta resposta = new DTO_Resposta();
@@ -26,7 +30,7 @@ public class FuncionarioController : ControllerBase
         return resposta;
     }
     
-    [HttpPut(Name = "AtualizarFuncionario")]
+    [HttpPut("AtualizarFuncionario")]
     public async Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
@@ -34,11 +38,11 @@ public class FuncionarioController : ControllerBase
         return resposta;
     }
     [AllowAnonymous]
-    [HttpGet(Name = "PesquisarFuncionario")]
-    public async Task<DTO_Resposta> PesquisarFuncionarioAsync(string consulta)
+    [HttpGet("PesquisarFuncionario")]
+    public DTO_Resposta PesquisarFuncionario(string consulta)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta = await  _funcionario.PesquisarFuncionario(consulta);
+        resposta =  _funcionario.PesquisarFuncionario(consulta);
         return resposta;
     }
     

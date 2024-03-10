@@ -7,4 +7,5 @@ public interface ISectorEconomico
 {
         Task<DTO_Resposta> CadastrarSectorEconomico(DTO_SectorEconomico sectorEconomico);
         Task<DTO_Resposta> AtualizarSectorEconomico(DTO_SectorEconomico sectorEconomico, int id);
+        Task<DTO_Resposta> ListarSectoresEconomicos();
 }

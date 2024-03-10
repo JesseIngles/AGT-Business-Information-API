@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CrudEmpresas.Entities
 {
 
-    [Table("sectorEconomico")]
+    [Table("sectoreconomico")]
     public class SectorEconomico
     {
         [Column("id")]

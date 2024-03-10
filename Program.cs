@@ -15,6 +15,8 @@ builder.Services.AddTransient<IAgente, CAgente>();
 builder.Services.AddTransient<IFuncionario, CFuncionario>();
 builder.Services.AddTransient<IRegime, CRegime>();
 builder.Services.AddTransient<ISectorEconomico, CSectorEconomico>();
+builder.Services.AddTransient<ITipoEmpresa, CTipoEmpresa>();
+builder.Services.AddTransient<IAtividadeEconomica, CAtividadeEconomica>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -66,6 +68,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -84,7 +87,7 @@ app.UseAuthorization();
             policy.RequireClaim("Senha");
         });
     }
-);*/ 
+);*/
 app.MapControllers();
 
 app.Run();

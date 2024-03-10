@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CrudEmpresas.Controllers;
 
+[Route("api/[controller]")]
 [ApiController]
-[Route("[controller]/v1/")]
 public class AgenteController : ControllerBase
 {
     private readonly ILogger<AgenteController> _logger;
@@ -17,15 +17,17 @@ public class AgenteController : ControllerBase
         _agente = agente;
     }
 
-    [HttpPost(Name = "CriarAgente")]
+    [HttpPost("CriarAgente")]
     public async Task<DTO_Resposta> CriarAgente(DTO_Agente agente)
     {
         DTO_Resposta resposta = new DTO_Resposta();
+        Random random = new Random();
+        int valeu = random.Next(1, 100);
         resposta = await _agente.CadastrarAgente(agente);
         return resposta;
     }
 
-    [HttpPost(Name = "LogarAgente")]
+    [HttpPost("LogarAgente")]
     public DTO_Resposta LogarAgente(DTO_Login login)
     {
         DTO_Resposta resposta = new DTO_Resposta();
@@ -33,14 +35,14 @@ public class AgenteController : ControllerBase
         return resposta;
     }
 
-    [HttpDelete(Name = "RemoverAgente")]
+    [HttpDelete("RemoverAgente")]
     public async Task<DTO_Resposta> RemoverAgenter(int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = await _agente.RemoverAgente(id);
         return resposta;
     }
-    
 
-    
+
+
 }

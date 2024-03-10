@@ -16,10 +16,15 @@ namespace CrudEmpresas.DAL.CRepository
             _db = context;
         }
 
+        public Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
         {  
            
-               DTO_Resposta resposta = new DTO_Resposta();
+            DTO_Resposta resposta = new DTO_Resposta();
             try
             {
                 await _db.SaveChangesAsync();
@@ -32,7 +37,7 @@ namespace CrudEmpresas.DAL.CRepository
            throw new NotImplementedException();
         }
 
-        public Task<DTO_Resposta> PesquisarFuncionario(string consulta)
+        public DTO_Resposta PesquisarFuncionario(string consulta)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try

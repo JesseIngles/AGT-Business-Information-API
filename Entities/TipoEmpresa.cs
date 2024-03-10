@@ -5,11 +5,11 @@ namespace CrudEmpresas.Entities
 {
 
     [Table("tipoEmpresa")]
-    public class  tipoEmpresa
+    public class  TipoEmpresa
     {
         [Column("id")]
-        public int id {get;set;}
+        public int Id {get;set;}
         [Column("nome")]
-        public string nome{get;set;}
+        public string Nome{get;set;}
     }
 }

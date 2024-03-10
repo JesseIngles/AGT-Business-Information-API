@@ -17,7 +17,7 @@ public class RegimeController : ControllerBase
         _regime = regime;
     }
 
-    [HttpPost(Name = "CriarRegime")]
+    [HttpPost("CriarRegime")]
     public async Task<DTO_Resposta> CriarRegime(DTO_Regime regime)
     {
         DTO_Resposta resposta = new DTO_Resposta();
@@ -25,7 +25,7 @@ public class RegimeController : ControllerBase
         return resposta;
     }   
 
-    [HttpDelete(Name = "ApagarRegime")]
+    [HttpDelete("ApagarRegime")]
     public async Task<DTO_Resposta> ApagarRegime(int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
@@ -33,7 +33,7 @@ public class RegimeController : ControllerBase
         return resposta;
     }    
 
-    [HttpPut(Name = "AtualizarRegime")]
+    [HttpPut("AtualizarRegime")]
     public async Task<DTO_Resposta> AtualizarRegime(DTO_Regime regime, int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
