@@ -33,13 +33,21 @@ public class EmpresaController : ControllerBase
         resposta = await _empresa.AtualizarEmpresa(empresa, id);
         return resposta;
     }
-    
     [AllowAnonymous]
     [HttpGet(Name = "PesquisarEmpresa")]
-    public DTO_Resposta PesquisarEmpresa(string consulta)
+    public async Task<DTO_Resposta> PesquisarEmpresaAsync(string consulta)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta = _empresa.PesquisarEmpresa(consulta);
+        resposta = await  _empresa.PesquisarEmpresa(consulta);
+        return resposta;
+    }
+
+    [AllowAnonymous]
+    [HttpDelete(Name = "RemoverEmpresa")]
+    public async Task<DTO_Resposta> RemoverEmpresa(int id)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = await  _empresa.RemoverEmpresa(id);
         return resposta;
     }
 }

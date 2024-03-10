@@ -8,8 +8,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CrudEmpresas.DAL.CRepository
 {
-    /*
-            public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id);
+    public class CEmpresa : IEmpresa
+    {
+        private readonly MyDbContext _db;
+        public CEmpresa(MyDbContext context)
+        {
+            _db = context;
+        }
+        public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try 
@@ -24,8 +30,6 @@ namespace CrudEmpresas.DAL.CRepository
                     tbempresaexistente.Logotipo = ConverterImagemService.ConverterParaBase64(empresa.Logotipo); 
                     await _db.SaveChangesAsync();
 
-        
-
                     resposta.mensagem = "Dados atualizados com sucesso";
                     return resposta;
                 }
@@ -36,18 +40,6 @@ namespace CrudEmpresas.DAL.CRepository
                 resposta.mensagem = "Não foi possível concluir a operação com sucesso";
             }
             return resposta;
-        }*/
-    public class CEmpresa : IEmpresa
-    {
-        private readonly MyDbContext _db;
-        public CEmpresa(MyDbContext context)
-        {
-            _db = context;
-        }
-
-        public Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<DTO_Resposta> CadastrarEmpresa(DTO_Empresa empresa)
@@ -109,7 +101,6 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
-
 
         public DTO_Resposta PesquisarEmpresa(string consulta)
         {
