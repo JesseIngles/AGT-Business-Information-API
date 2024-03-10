@@ -149,7 +149,7 @@ namespace CrudEmpresas.DAL.CRepository
                     foreach(var email in emails)
                     {
                         _db.TbEmailEmpresa.Remove(email);
-                        await _db.SaveChangesAsync();
+                        await _db.();
                     }
                     var telefones = _db.TbTelefoneEmpresa.Where( e => e.EmpresaId == empresaExistente.Id);
                     foreach(var telefone in telefones)
