@@ -12,7 +12,6 @@ namespace CrudEmpresas.Entities
         public string PrimeiroNome {get;set;}
         [Column("ultimonome")]
         public string UltimoNome {get;set;}
-    
         [Column("nif")]
         public string Nif {get;set;}
         [Column("cv")]
