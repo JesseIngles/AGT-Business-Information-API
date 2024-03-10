@@ -17,6 +17,7 @@ public class MyDbContext : DbContext
     public DbSet<Agente> TbAgente { get; set; }
     public DbSet<AgenteEmail> TbAgenteEmail {get;set;}
     public DbSet<AgenteTelefone> TbAgenteTelefone {get;set;}
+     public DbSet<SectorEconomico> TbSectorEconomico {get;set;}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 <<<<<<< HEAD
