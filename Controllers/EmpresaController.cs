@@ -33,7 +33,11 @@ public class EmpresaController : ControllerBase
         resposta = await _empresa.AtualizarEmpresa(empresa, id);
         return resposta;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 7e557ab7321498070d65e1dcb591417ba3872f83
     [AllowAnonymous]
     [HttpGet(Name = "PesquisarEmpresa")]
     public DTO_Resposta PesquisarEmpresa(string consulta)
