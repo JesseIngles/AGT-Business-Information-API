@@ -9,11 +9,11 @@ namespace CrudEmpresas.Entities
         [Column("id")]
         public int Id {get;set;}
         [Column("empresaid")]
-        public string EmpresaId {get;set;}
+        public int EmpresaId {get;set;}
         [Column("funcionarioid")]
-        public string FuncionarioId {get;set;}
+        public int FuncionarioId {get;set;}
     
         [Column("cargoid")]
-        public string CargoId {get;set;}
+        public int CargoId {get;set;}
     }
 }

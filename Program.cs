@@ -1,6 +1,7 @@
 using CrudEmpresas.DAL.CRepository;
 using CrudEmpresas.DAL.Database;
 using CrudEmpresas.DAL.IRepository;
+using CrudEmpresas.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -12,7 +13,10 @@ builder.Services.AddTransient<MyDbContext>();
 builder.Services.AddTransient<IEmpresa, CEmpresa>();
 builder.Services.AddTransient<IAgente, CAgente>();
 builder.Services.AddTransient<IFuncionario, CFuncionario>();
+builder.Services.AddTransient<IRegime, CRegime>();
 builder.Services.AddTransient<ISectorEconomico, CSectorEconomico>();
+builder.Services.AddTransient<ITipoEmpresa, CTipoEmpresa>();
+builder.Services.AddTransient<IAtividadeEconomica, CAtividadeEconomica>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -64,6 +68,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -82,7 +87,7 @@ app.UseAuthorization();
             policy.RequireClaim("Senha");
         });
     }
-);*/ 
+);*/
 app.MapControllers();
 
 app.Run();

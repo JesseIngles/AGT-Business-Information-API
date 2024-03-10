@@ -18,28 +18,45 @@ public class EmpresaController : ControllerBase
         _empresa = empresa;
     }
     [Authorize("RequiredClaims")]
-    [HttpPost(Name = "CriarEmpresa")]
+    [HttpPost("CriarEmpresa")]
     public async Task<DTO_Resposta> CriarEmpresa(DTO_Empresa empresa)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = await _empresa.CadastrarEmpresa(empresa);
         return resposta;
     }
- 
-    [HttpPut(Name = "AtualizarEmpresa")]
+
+    [HttpPut("AtualizarEmpresa")]
     public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = await _empresa.AtualizarEmpresa(empresa, id);
         return resposta;
     }
-    
     [AllowAnonymous]
-    [HttpGet(Name = "PesquisarEmpresa")]
+    [HttpGet("PesquisarEmpresa")]
     public DTO_Resposta PesquisarEmpresa(string consulta)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = _empresa.PesquisarEmpresa(consulta);
+        return resposta;
+    }
+
+    [AllowAnonymous]
+    [HttpDelete("RemoverEmpresa")]
+    public async Task<DTO_Resposta> RemoverEmpresa(int id)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = await _empresa.RemoverEmpresa(id);
+        return resposta;
+    }
+
+    [AllowAnonymous]
+    [HttpGet("EmpresaFuncionarios")]
+    public DTO_Resposta EmpresaFuncionario(int empresaId)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = _empresa.EmpresaFuncionarios(empresaId);
         return resposta;
     }
 }

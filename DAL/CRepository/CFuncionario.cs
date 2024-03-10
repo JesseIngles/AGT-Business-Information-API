@@ -16,8 +16,14 @@ namespace CrudEmpresas.DAL.CRepository
             _db = context;
         }
 
-        public async Task<DTO_Resposta> CadastrarFuncionario()
-        {   
+        public Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
+        {  
+           
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
@@ -28,8 +34,26 @@ namespace CrudEmpresas.DAL.CRepository
                 resposta.mensagem = ex.ToString();
             }
             return resposta;
+           throw new NotImplementedException();
+        }
+
+        public DTO_Resposta PesquisarFuncionario(string consulta)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var FuncionarioExistentes = _db.TbFuncionario.ToList();
+                resposta.resposta = FuncionarioExistentes.Select(e => new { Funcionario = e, Pontuacao = Fuzz.PartialRatio( e.PrimeiroNome, e.UltimoNome) }); 
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
         }
     }
           
-}
+
             

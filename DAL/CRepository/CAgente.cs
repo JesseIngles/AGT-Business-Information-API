@@ -117,6 +117,27 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
+        public async Task<DTO_Resposta> RemoverAgente(int id)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var agenteExistente = _db.TbAgente.First(r => r.Id == id);
+                if(agenteExistente == null)
+                {
+                    resposta.mensagem = "Não existe";
+                    return resposta;
+                }
+                _db.TbAgente.Remove(agenteExistente);
+                await _db.SaveChangesAsync();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
     }
 
 }

@@ -5,7 +5,7 @@ namespace CrudEmpresas.DAL.IRepository;
 
 public interface ISectorEconomico
 {
-        Task<DTO_Resposta> CadastrarSectorEconomico(DTO_SectorEconomico SectorEconomico);
-        DTO_Resposta LogarSectorEconomico(DTO_Login login);
-        Task<DTO_Resposta> AtualizarSectorEconomico(DTO_SectorEconomico SectorEconomico, int id);
+        Task<DTO_Resposta> CadastrarSectorEconomico(DTO_SectorEconomico sectorEconomico);
+        Task<DTO_Resposta> AtualizarSectorEconomico(DTO_SectorEconomico sectorEconomico, int id);
+        Task<DTO_Resposta> ListarSectoresEconomicos();
 }

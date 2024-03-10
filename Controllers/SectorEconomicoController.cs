@@ -7,26 +7,31 @@ namespace CrudEmpresas.Controllers;
 
 [ApiController]
 [Route("[controller]/v1/")]
-public class  SectorEconomicoController : ControllerBase
+public class SectorEconomicoController : ControllerBase
 {
-    private readonly ISectorEconomico<SectorEconomicoController> _logger;
-    private readonly ISectorEconomico _agenSectorEconomico;
-    public SectorEconomicoController(ILogger<SectorEconomicoController> logger, ISectorEconomico SectorEconomico)
+    private readonly ILogger<SectorEconomicoController> _logger;
+    private readonly ISectorEconomico _sectorEconomico;
+    public SectorEconomicoController(ILogger<SectorEconomicoController> logger, ISectorEconomico sectorEconomico)
     {
         _logger = logger;
-        _SectorEconomico = SectorEconomico;
+        _sectorEconomico = sectorEconomico;
     }
 
-    [HttpPost(Name = "CriarSectorEconomico")]
-
-    public async Task<DTO_Resposta> CriarSectorEconomico (DTO_SectorEconomico sectorEconomico )
-
+    [HttpPost("CriarSectorEconomico")]
+    public async Task<DTO_Resposta> CriarSectorEconomico(DTO_SectorEconomico sectorEconomico)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta = await _SectorEconomico.CadastrarSectorEconomico(sectorEconomico);
+        resposta = await _sectorEconomico.CadastrarSectorEconomico(sectorEconomico);
         return resposta;
     }
-    
 
-    
+    [HttpGet("ListarSectoresEconomicos")]
+    public async Task<DTO_Resposta> PegarSectoresEconomicos()
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = await _sectorEconomico.ListarSectoresEconomicos();
+        return resposta;
+    }
+
+
 }

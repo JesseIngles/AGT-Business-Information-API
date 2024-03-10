@@ -5,6 +5,7 @@ using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
 using CrudEmpresas.Services;
 using FuzzySharp;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrudEmpresas.DAL.CRepository
 {
@@ -43,20 +44,19 @@ namespace CrudEmpresas.DAL.CRepository
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                
+
                 var NovoSectorEconomico = new SectorEconomico
                 {
-                    Nome = sectorEconomico.Nome,
-                                        
+                    Nome = sectorEconomico.Nome
                 };
                 if (NovoSectorEconomico == null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
                 }
-                   }
-                    }
 
+                         
+            }
       }
        }
   }
@@ -65,20 +65,20 @@ namespace CrudEmpresas.DAL.CRepository
       
 
 
-                
-                
-           
-         
-    
-
-                     
-                         
-                   
-                                                                           
-  
 
 
-            
-                      
 
-                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
