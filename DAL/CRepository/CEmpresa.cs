@@ -8,35 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CrudEmpresas.DAL.CRepository
 {
-    /*
-            public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id);
-        {
-            DTO_Resposta resposta = new DTO_Resposta();
-            try 
-            {
-                var tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
-                
-                if (tbempresaexistente != null)
-                {
-                    tbempresaexistente.Firma = empresa.Firma;
-                    tbempresaexistente.Nif = empresa.Nif; 
-                    tbempresaexistente.DataFundacao = empresa.DataFundacao;
-                    tbempresaexistente.Logotipo = ConverterImagemService.ConverterParaBase64(empresa.Logotipo); 
-                    await _db.SaveChangesAsync();
-
-        
-
-                    resposta.mensagem = "Dados atualizados com sucesso";
-                    return resposta;
-                }
-                resposta.mensagem = "Dados inválidos";
-            }catch(Exception ex)
-            {
-                resposta.resposta = ex.Message;
-                resposta.mensagem = "Não foi possível concluir a operação com sucesso";
-            }
-            return resposta;
-        }*/
     public class CEmpresa : IEmpresa
     {
         private readonly MyDbContext _db;
@@ -44,12 +15,6 @@ namespace CrudEmpresas.DAL.CRepository
         {
             _db = context;
         }
-
-        public Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<DTO_Resposta> CadastrarEmpresa(DTO_Empresa empresa)
         {
             DTO_Resposta resposta = new DTO_Resposta();
@@ -111,22 +76,31 @@ namespace CrudEmpresas.DAL.CRepository
         }
 
 
-        public DTO_Resposta PesquisarEmpresa(string consulta)
-        {
-            DTO_Resposta resposta = new DTO_Resposta();
-            try
-            {
-                var EmpresasExistentes = _db.TbEmpresa.ToList();
-                resposta.resposta = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Firma) }); ;
-                resposta.mensagem = "Sucesso";
-            }
-            catch (System.Exception ex)
-            {
-                resposta.mensagem = ex.ToString();
-            }
-            return resposta;
-        }
-        public async Task<DTO_Resposta> VerEmpresaId(int id)
+       public DTO_Resposta AtualizarEmpresa(DTO_Empresa empresa, int id,MyDbContext _db)
+         {
+               DTO_Resposta  resposta  = new DTO_Resposta();
+         try 
+         {
+              var tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
+             
+                if (tbempresaexistente != null)
+                {
+                    
+                    Emails = empresa.Emails;
+
+                     _db.SaveChanges();
+                     resposta.mensagem = "Dados atualizados com sucesso";
+                    return resposta;
+
+                }
+                  else
+                {
+                    resposta.resposta = "modelo não encontrada";
+                    resposta.mensagem = "Não foi possível encontrar a modelo para edição";
+
+    }
+
+        public async Task<DTO_Resposta> VerEmpresa(int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
@@ -176,9 +150,24 @@ namespace CrudEmpresas.DAL.CRepository
             {
                 resposta.mensagem = ex.ToString();
             }
-            return resposta;
-        }
-
+ 
+                        return resposta;
+    }
+                     
+    
+        public  DTO_Resposta PesquisarEmpresa(string consulta)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        var EmpresasExistentes = _db.TbEmpresa.ToList();
+        var resultados = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Nome) });
+        resposta.resposta = resultados;
+        return resposta;
 
     }
+
+
+          }
+          
+} 
+}
 }
