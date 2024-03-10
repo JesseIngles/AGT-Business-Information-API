@@ -12,6 +12,7 @@ builder.Services.AddTransient<MyDbContext>();
 builder.Services.AddTransient<IEmpresa, CEmpresa>();
 builder.Services.AddTransient<IAgente, CAgente>();
 builder.Services.AddTransient<IFuncionario, CFuncionario>();
+builer.Services.AddTransient<IRegime, CRegime>()
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
