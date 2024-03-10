@@ -8,23 +8,23 @@ using FuzzySharp;
 
 namespace CrudEmpresas.DAL.CRepository
 {
-    public class CRegime : IRegime
+    public class CCargo : ICargo
     {
         private readonly MyDbContext _db;
-        public CRegime(MyDbContext context)
+        public CCargo(MyDbContext context)
         {
             _db = context;
         }
 
-        public async Task<DTO_Resposta> AtualizarRegime(DTO_Regime regime, int id)
+        public async Task<DTO_Resposta> AtualizarCargo(DTO_Cargo cargo, int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var RegimeExistente = _db.TbRegime.First(a => a.Id == id);
-                if (RegimeExistente != null)
+                var CargoExistente = _db.TbCargo.First(a => a.Id == id);
+                if (CargoExistente != null)
                 {
-                    RegimeExistente.Nome = regime.Nome;
+                    CargoExistente.Nome = cargo.Nome;
                     await _db.SaveChangesAsync();
                     resposta.mensagem = "Sucesso";
                     return resposta;
@@ -38,16 +38,16 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
-        public async Task<DTO_Resposta> CadastrarRegime(DTO_Regime regime)
+        public async Task<DTO_Resposta> CadastrarCargo(DTO_Cargo )
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var NovoRegime = new regime
+                var NovoCargo = new cargo
                 {
-                    Nome = regime.Nome,
+                    Nome = cargo.Nome,
                 };
-                if (NovoRegime == null)
+                if (NovoCargo == null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
@@ -65,3 +65,4 @@ namespace CrudEmpresas.DAL.CRepository
     }
 
 }
+

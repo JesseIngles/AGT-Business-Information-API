@@ -14,6 +14,7 @@ public class MyDbContext : DbContext
     public DbSet<Funcionario> TbFuncionario {get;set;}
     public DbSet<FuncionarioEmail> TbFuncionarioEmail {get;set;}
     public DbSet<EmpresaFuncionario> TbEmpresaFuncionario {get;set;}
+    public DbSet<Cargo> TbCargo {get;set;}
     public DbSet<Agente> TbAgente { get; set; }
     public DbSet<AgenteEmail> TbAgenteEmail {get;set;}
     public DbSet<AgenteTelefone> TbAgenteTelefone {get;set;}
