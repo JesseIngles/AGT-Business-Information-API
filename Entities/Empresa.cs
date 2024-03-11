@@ -20,7 +20,7 @@ namespace CrudEmpresas.Entities
         public bool Ativo { get; set; }
         [Column("sectoreconomicoid")]
         public int SectorEconomicoId { get; set; }
-        [Column("atividadeeconomicaId")]
+        [Column("atividadeeconomicaid")]
         public int AtividadeEconomicaId { get; set; }
         [Column("tipoempresaid")]
         public int TipoEmpresaId { get; set; }

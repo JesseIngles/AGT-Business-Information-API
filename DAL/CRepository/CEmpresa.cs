@@ -75,7 +75,7 @@ namespace CrudEmpresas.DAL.CRepository
                         var novoEmail = new EmpresaEmail
                         {
                             Email = item,
-                            EmpresaId = _db.TbEmpresa.Find(empresaExistente).Id
+                            EmpresaId = _db.TbEmpresa.First(e => e.Nif == empresaExistente.Nif).Id
                         };
                         await _db.TbEmailEmpresa.AddAsync(novoEmail);
                         _db.SaveChanges();
@@ -88,7 +88,7 @@ namespace CrudEmpresas.DAL.CRepository
                         var novoTelefone = new EmpresaTelefone
                         {
                             Telefone = item,
-                            EmpresaId = _db.TbEmpresa.Find(empresaExistente).Id
+                            EmpresaId = _db.TbEmpresa.First(e => e.Nif == empresaExistente.Nif).Id
                         };
                         await _db.TbTelefoneEmpresa.AddAsync(novoTelefone);
                         _db.SaveChanges();

@@ -131,6 +131,21 @@ namespace CrudEmpresas.DAL.CRepository
                     resposta.mensagem = "Não existe";
                     return resposta;
                 }
+                    var emails = _db.TbAgenteEmail.Where(e => e.AgenteId == agenteExistente.Id);
+                    foreach (var email in emails)
+                    {
+                        _db.TbAgenteEmail.Remove(email);
+                        await _db.SaveChangesAsync();
+                    }
+                    var telefones = _db.TbAgenteTelefone.Where(e => e.AgenteId == agenteExistente.Id);
+                    foreach (var telefone in telefones)
+                    {
+                        _db.TbAgenteTelefone.Remove(telefone);
+                        await _db.SaveChangesAsync();
+                    }
+                    _db.TbAgente.Remove(agenteExistente);
+                    await _db.SaveChangesAsync();
+                    resposta.mensagem = "Sucesso";
                 _db.TbAgente.Remove(agenteExistente);
                 await _db.SaveChangesAsync();
                 resposta.mensagem = "Sucesso";

@@ -19,7 +19,7 @@ public class EmpresaController : ControllerBase
     }
     //[Authorize("RequiredClaims")]
     [HttpPost("CriarEmpresa")]
-    public async Task<DTO_Resposta> CriarEmpresa([FromBody] DTO_Empresa empresa)
+    public async Task<DTO_Resposta> CriarEmpresa(DTO_Empresa empresa)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = await _empresa.CadastrarEmpresa(empresa);
