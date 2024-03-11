@@ -7,9 +7,7 @@ namespace CrudEmpresas.DTO
         public string Nif { get; set; }
         public string senha  { get; set; }
         public bool isAdmin { get; set; }
-        public bool Ativo { get; set; }
-        public List<string> Emails {get;set;}
-        public List<string> Telefones {get;set;}
-
+        public List<string>? Emails {get;set;}
+        public List<string>? Telefones {get;set;}
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CrudEmpresas.Entities
 {
 
-    [Table("agentelefone")]
+    [Table("agentetelefone")]
     public class AgenteTelefone
     {
         [Column("id")]

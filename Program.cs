@@ -66,6 +66,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true
         };
     });
+
+/*builder.Services.AddCors(
+    options => 
+);*/
 var app = builder.Build();
 
 

@@ -15,11 +15,11 @@ namespace CrudEmpresas.Entities
         [Column("nif")]
         public string Nif {get;set;}
 
-        [Column("isAdmin")]
+        [Column("isadmin")]
         public bool IsAdmin {get;set;}
 
-        [Column("Ativo")]
-        public bool Ativo {get;set;} 
+        [Column("ativo")]
+        public bool Ativo {get;set;} = false;
     }  
 }
     

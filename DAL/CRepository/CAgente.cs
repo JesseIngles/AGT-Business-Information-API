@@ -51,8 +51,7 @@ namespace CrudEmpresas.DAL.CRepository
                     Nome = agente.Nome,
                     Senha = agente.senha,
                     Nif = agente.Nif,
-                    IsAdmin = (agentes.Count == 0) ? true : false,
-                    Ativo = false
+                    IsAdmin = (agentes.Count == 0) ? true : false
                 };
                 if (NovoAgente == null)
                 {
@@ -68,11 +67,12 @@ namespace CrudEmpresas.DAL.CRepository
                         var novoEmail = new AgenteEmail
                         {
                             Email = item,
-                            AgenteId = _db.TbAgente.Find(NovoAgente).Id
+                            AgenteId = _db.TbAgente.First(r => r.Nif == NovoAgente.Nif).Id
                         };
-                        await _db.TbAgenteEmail.AddAsync(novoEmail);
-                        _db.SaveChanges();
+                        _db.TbAgenteEmail.Add(novoEmail);
+                        await _db.SaveChangesAsync();
                     }
+
                 }
                 if (agente.Telefones != null)
                 {
@@ -81,10 +81,10 @@ namespace CrudEmpresas.DAL.CRepository
                         var novoTelefone = new AgenteTelefone
                         {
                             Telefone = item,
-                            AgenteId = _db.TbAgente.Find(NovoAgente).Id
+                            AgenteId = _db.TbAgente.First(r => r.Nif == NovoAgente.Nif).Id
                         };
-                        await _db.TbAgenteTelefone.AddAsync(novoTelefone);
-                        _db.SaveChanges();
+                        _db.TbAgenteTelefone.Add(novoTelefone);
+                        await _db.SaveChangesAsync();
                     }
                 }
                 resposta.mensagem = "Sucesso";
@@ -105,8 +105,11 @@ namespace CrudEmpresas.DAL.CRepository
                                                         && a.Senha == login.Senha);
                 if (AgenteExistente != null)
                 {
+                    AgenteExistente.Ativo = true;
+                    _db.SaveChanges();
                     resposta.resposta = JwtService.GerarTokenAgente();
                     resposta.mensagem = "Sucesso";
+                    return resposta;
                 }
                 resposta.mensagem = "Nif ou senha inválidos";
             }
@@ -123,7 +126,7 @@ namespace CrudEmpresas.DAL.CRepository
             try
             {
                 var agenteExistente = _db.TbAgente.First(r => r.Id == id);
-                if(agenteExistente == null)
+                if (agenteExistente == null)
                 {
                     resposta.mensagem = "Não existe";
                     return resposta;

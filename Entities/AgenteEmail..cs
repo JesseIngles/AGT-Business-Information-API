@@ -7,10 +7,10 @@ namespace CrudEmpresas.Entities
     public class AgenteEmail
     {
         [Column("id")]
-        public int Id {get;set;}
+        public int Id { get; set; }
         [Column("email")]
-        public string Email {get;set;}
-        [Column("agenteemail")]
-        public int AgenteId {get;set;}
+        public string Email { get; set; }
+        [Column("agenteid")]
+        public int AgenteId { get; set; }
     }
 }

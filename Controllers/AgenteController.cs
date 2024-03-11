@@ -21,8 +21,6 @@ public class AgenteController : ControllerBase
     public async Task<DTO_Resposta> CriarAgente(DTO_Agente agente)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        Random random = new Random();
-        int valeu = random.Next(1, 100);
         resposta = await _agente.CadastrarAgente(agente);
         return resposta;
     }
