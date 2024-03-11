@@ -6,8 +6,7 @@ using CrudEmpresas.Entities;
 using CrudEmpresas.Services;
 using FuzzySharp;
 
-namespace CrudEmpresas.DAL.CRepository
-{
+namespace CrudEmpresas.DAL.CRepository;
     public class CRegime : IRegime
     {
         private readonly MyDbContext _db;
@@ -16,7 +15,6 @@ namespace CrudEmpresas.DAL.CRepository
             _db = context;
         }
 
-<<<<<<< HEAD
         public async Task<DTO_Resposta> AtualizarRegime(DTO_Regime regime, int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
@@ -39,61 +37,51 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
+
         public async Task<DTO_Resposta> CadastrarRegime(DTO_Regime regime)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var NovoRegime = new regime
-                {
-                    Nome = regime.Nome,
-                };
-                if (NovoRegime == null)
+                if(regime== null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
                 }
-            
-                
-        
+                var NovoRegime = new Regime
+                {
+                    Nome = regime.Nome
+                };
+                await _db.TbRegime.AddAsync(NovoRegime);
+                _db.SaveChanges();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
         }
 
-    
-                
-            
-        }
-
-    }
-
-}
-=======
-        public Task<DTO_Resposta> CadastrarRegime()
+        public async Task<DTO_Resposta> RemoverRegime(int id)
         {
-            throw new NotImplementedException();
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var regimeExistente = _db.TbRegime.First(r => r.Id == id);
+                if(regimeExistente == null)
+                {
+                    resposta.mensagem = "Não existe";
+                    return resposta;
+                }
+                _db.TbRegime.Remove(regimeExistente);
+                await _db.SaveChangesAsync();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
         }
     }
-}
-
-       
-                
-      
-
-
-                
-                
-           
-         
-    
-
-                     
-                         
-                   
-                                                                           
-  
-
-
-            
-                      
-
-       
->>>>>>> 5ef677ed0ccce53a5d5592b0e62a6828c049ad25

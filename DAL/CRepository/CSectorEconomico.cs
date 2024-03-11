@@ -5,6 +5,7 @@ using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
 using CrudEmpresas.Services;
 using FuzzySharp;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrudEmpresas.DAL.CRepository
 {
@@ -43,11 +44,10 @@ namespace CrudEmpresas.DAL.CRepository
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                
+
                 var NovoSectorEconomico = new SectorEconomico
                 {
-                    Nome = sectorEconomico.Nome,
-                                        
+                    Nome = sectorEconomico.Nome
                 };
                 if (NovoSectorEconomico == null)
                 {
@@ -55,30 +55,54 @@ namespace CrudEmpresas.DAL.CRepository
                     return resposta;
                 }
 
-                         
+                _db.TbSectorEconomico.Add(NovoSectorEconomico);
+                await _db.SaveChangesAsync();
+                resposta.mensagem = "Sucesso";
+
+
             }
-      }
-       }
-  }
-       
-                
-      
+            catch (Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+
+        public async Task<DTO_Resposta> ListarSectoresEconomicos()
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                resposta.resposta = await _db.TbSectorEconomico.ToListAsync();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+    }
+}
 
 
-                
-                
-           
-         
-    
-
-                     
-                         
-                   
-                                                                           
-  
 
 
-            
-                      
 
-                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,23 +18,24 @@ namespace CrudEmpresas.DAL.CRepository
         public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
-            try 
+            try
             {
                 var tbempresaexistente = _db.TbEmpresa.FirstOrDefault(c => c.Id == id);
-                
+
                 if (tbempresaexistente != null)
                 {
                     tbempresaexistente.Firma = empresa.Firma;
-                    tbempresaexistente.Nif = empresa.Nif; 
+                    tbempresaexistente.Nif = empresa.Nif;
                     tbempresaexistente.DataFundacao = empresa.DataFundacao;
-                    tbempresaexistente.Logotipo = ConverterImagemService.ConverterParaBase64(empresa.Logotipo); 
+                    tbempresaexistente.Logotipo = ConverterImagemService.ConverterParaBase64(empresa.Logotipo);
                     await _db.SaveChangesAsync();
 
                     resposta.mensagem = "Dados atualizados com sucesso";
                     return resposta;
                 }
                 resposta.mensagem = "Dados inválidos";
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 resposta.resposta = ex.Message;
                 resposta.mensagem = "Não foi possível concluir a operação com sucesso";
@@ -108,7 +109,9 @@ namespace CrudEmpresas.DAL.CRepository
             try
             {
                 var EmpresasExistentes = _db.TbEmpresa.ToList();
-                resposta.resposta = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta, e.Firma) }); ;
+                var Empresas = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta.ToLower(), e.Firma.ToLower())
+                                            + Fuzz.PartialRatio(consulta.ToLower(), e.Nif.ToLower())});
+                resposta.resposta = Empresas.Where(x => x.Pontuacao >= 60);
                 resposta.mensagem = "Sucesso";
             }
             catch (System.Exception ex)
@@ -117,13 +120,13 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
-        public async Task<DTO_Resposta> VerEmpresaId(int id)
+        public async Task<DTO_Resposta> VerEmpresa(int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
                 resposta.resposta = await _db.TbEmpresa.FirstAsync(empresa => empresa.Id == id);
-                if(resposta.resposta!=null)
+                if (resposta.resposta != null)
                 {
                     resposta.mensagem = "Sucesso";
                 }
@@ -137,22 +140,22 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
-        public async Task<DTO_Resposta> RemoveEmpresa(int id)
+        public async Task<DTO_Resposta> RemoverEmpresa(int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
                 var empresaExistente = _db.TbEmpresa.First(empresa => empresa.Id == id);
-                if(empresaExistente != null)
+                if (empresaExistente != null)
                 {
-                    var emails = _db.TbEmailEmpresa.Where( e => e.EmpresaId == empresaExistente.Id);
-                    foreach(var email in emails)
+                    var emails = _db.TbEmailEmpresa.Where(e => e.EmpresaId == empresaExistente.Id);
+                    foreach (var email in emails)
                     {
                         _db.TbEmailEmpresa.Remove(email);
                         await _db.SaveChangesAsync();
                     }
-                    var telefones = _db.TbTelefoneEmpresa.Where( e => e.EmpresaId == empresaExistente.Id);
-                    foreach(var telefone in telefones)
+                    var telefones = _db.TbTelefoneEmpresa.Where(e => e.EmpresaId == empresaExistente.Id);
+                    foreach (var telefone in telefones)
                     {
                         _db.TbTelefoneEmpresa.Remove(telefone);
                         await _db.SaveChangesAsync();
@@ -162,7 +165,7 @@ namespace CrudEmpresas.DAL.CRepository
                     resposta.mensagem = "Sucesso";
                 }
                 resposta.mensagem = "Não existe";
-            }  
+            }
             catch (Exception ex)
             {
                 resposta.mensagem = ex.ToString();
@@ -170,6 +173,26 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
-
+        public DTO_Resposta EmpresaFuncionarios(int empresaId)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var empresafuncionarios = from b in _db.TbEmpresaFuncionario
+                                          where b.EmpresaId == empresaId
+                                          select new
+                                          {
+                                              Cargo = _db.TbCargo.First(c => c.Id == b.CargoId).Nome,
+                                              Funcionario = _db.TbFuncionario.First(f => f.Id == b.FuncionarioId).PrimeiroNome
+                                          };
+                resposta.resposta = empresafuncionarios;
+                resposta.mensagem = "Sucesso";
+            }
+            catch (Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
     }
 }

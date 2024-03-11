@@ -9,20 +9,28 @@ namespace CrudEmpresas.Controllers;
 [Route("[controller]/v1/")]
 public class TipoEmpresaController : ControllerBase
 {
-    private readonly ILogger<TipoEmpresaIdController> _logger;
-    private readonly ITipoEmpresa _TipoEmpresa;
-    public TipoEmpresaController(ILogger<TipoEmpresaController> logger, ITipoEmpresa TipoEmpresa)
+    private readonly ILogger<TipoEmpresaController> _logger;
+    private readonly ITipoEmpresa _tipoEmpresa;
+    public TipoEmpresaController(ILogger<TipoEmpresaController> logger, ITipoEmpresa tipoEmpresa)
     {
         _logger = logger;
-        _TipoEmpresa = tipoEmpresa;
+        _tipoEmpresa = tipoEmpresa;
     }
 
-    [HttpPost(Name = "TipoEmpresa")]
+    [HttpPost("TipoEmpresa")]
     public async Task<DTO_Resposta> CriarTipoEmpresa(DTO_TipoEmpresa tipoEmpresa)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = await _tipoEmpresa.CadastrarTipoEmpresa(tipoEmpresa);
         return resposta;
-    } 
-                                                                                                                              
     }
+
+    [HttpDelete("RemoverTipoEmpresa")]
+    public async Task<DTO_Resposta> RemoverTipoEmpresa(int id)
+    {
+        DTO_Resposta resposta = new DTO_Resposta();
+        resposta = await _tipoEmpresa.RemoverTipoEmpresa(id);
+        return resposta;
+    }
+
+}
