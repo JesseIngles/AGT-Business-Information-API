@@ -123,8 +123,7 @@ namespace CrudEmpresas.DAL.CRepository
                                     select new 
                                     {
                                         Nome = e.empresa.Firma,
-                                        Nif = e.empresa.Nif,
-                                        Logotipo = e.empresa.Logotipo
+                                        Nif = e.empresa.Nif
                                     };
                 resposta.mensagem = "Sucesso";
             }

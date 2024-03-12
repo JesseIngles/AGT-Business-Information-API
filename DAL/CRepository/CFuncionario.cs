@@ -26,9 +26,45 @@ namespace CrudEmpresas.DAL.CRepository
             throw new NotImplementedException();
         }
 
-        public Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
+        public DTO_Resposta CadastrarFuncionario(DTO_Funcionario funcionario)
         {
-            throw new NotImplementedException();
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var Novofuncionario = new Funcionario
+                {
+                    PrimeiroNome = funcionario.PrimeiroNome,
+                    UltimoNome = funcionario.UltimoNome,
+                    Nif = funcionario.Nif,
+                    CV = funcionario.CV,
+                    Foto = funcionario.Foto
+                };
+                if(Novofuncionario==null)
+                {
+                    resposta.mensagem = "Dados inválidos";
+                    return resposta;
+                }
+                _db.TbFuncionario.Add(Novofuncionario);
+                _db.SaveChanges();
+                if(funcionario.Emails != null)
+                {
+                    foreach(var item in funcionario.Emails)
+                    {
+                        var NovoEmail = new FuncionarioEmail
+                        {
+                            Email = item,
+                            FuncionarioId = _db.TbFuncionario.First(x => x.Nif == funcionario.Nif).Id
+                        };
+                        _db.TbFuncionarioEmail.Add(NovoEmail);
+                        _db.SaveChanges();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
         }
 
         public DTO_Resposta PesquisarFuncionario(string consulta)

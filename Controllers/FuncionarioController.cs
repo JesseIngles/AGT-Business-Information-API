@@ -23,12 +23,12 @@ public class FuncionarioController : ControllerBase
         _logger = logger;
         _funcionario = funcionario;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPost("AdicionarFuncionario")]
-    public async Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
+    public DTO_Resposta CadastrarFuncionario(DTO_Funcionario funcionario)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta = await _funcionario.CadastrarFuncionario(funcionario);
+        resposta =  _funcionario.CadastrarFuncionario(funcionario);
         return resposta;
     }
     //[Authorize("SerAgente")]
