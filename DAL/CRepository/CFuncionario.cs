@@ -32,7 +32,18 @@ namespace CrudEmpresas.DAL.CRepository
 
         public DTO_Resposta PesquisarFuncionario(string consulta)
         {
-            throw new NotImplementedException();
+        DTO_Resposta responde = new DTO_Resposta();
+        try
+        {
+            var FuncionarioExistentes = _db.tbFuncionario.ToList();
+            resposta.resposta = FuncionarioExistentes( e => new^{funcionario = e,)
+            resposta.mensagem ="sucesso" 
+        }
+        catch( system.exception ex)
+        {
+            resposta.mensagem = ex.ToString();
+        }
+        return resposta;
         }
 
         public DTO_Resposta RemoverFuncionario(int id)
