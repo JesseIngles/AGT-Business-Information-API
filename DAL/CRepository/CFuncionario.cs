@@ -15,6 +15,11 @@ namespace CrudEmpresas.DAL.CRepository
         {
             _db = context;
         }
+        public Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public DTO_Resposta AssociarFuncionarioEmpresa(int funcionarioid, int empresaid, int cargoid)
         {
@@ -26,11 +31,7 @@ namespace CrudEmpresas.DAL.CRepository
             throw new NotImplementedException();
         }
 
-        public Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public DTO_Resposta PesquisarFuncionario(string consulta)
         {
             throw new NotImplementedException();

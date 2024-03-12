@@ -19,7 +19,7 @@ public class SectorEconomicoController : ControllerBase
         _logger = logger;
         _sectorEconomico = sectorEconomico;
     }
-    [Authorize("RequiredClaims")]
+    [Authorize("SerAgente")]
     [HttpPost("CriarSectorEconomico")]
     public async Task<DTO_Resposta> CriarSectorEconomico(DTO_SectorEconomico sectorEconomico)
     {
@@ -27,7 +27,7 @@ public class SectorEconomicoController : ControllerBase
         resposta = await _sectorEconomico.CadastrarSectorEconomico(sectorEconomico);
         return resposta;
     }
-    [Authorize("RequiredClaims")]
+    [AllowAnonymous]
     [HttpGet("ListarSectoresEconomicos")]
     public async Task<DTO_Resposta> PegarSectoresEconomicos()
     {

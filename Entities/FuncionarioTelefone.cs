@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CrudEmpresas.Entities
 {
-
     [Table("funcionariotelefone")]
     public class FuncionarioTelefone
     {

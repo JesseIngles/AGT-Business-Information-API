@@ -19,7 +19,7 @@ public class TipoEmpresaController : ControllerBase
         _logger = logger;
         _tipoEmpresa = tipoEmpresa;
     }
-    [Authorize("RequiredClaims")]
+    [Authorize("SerAgente")]
     [HttpPost("TipoEmpresa")]
     public async Task<DTO_Resposta> CriarTipoEmpresa(DTO_TipoEmpresa tipoEmpresa)
     {
@@ -27,7 +27,7 @@ public class TipoEmpresaController : ControllerBase
         resposta = await _tipoEmpresa.CadastrarTipoEmpresa(tipoEmpresa);
         return resposta;
     }
-    [Authorize("RequiredClaims")]
+    [Authorize("SerAgente")]
     [HttpDelete("RemoverTipoEmpresa")]
     public async Task<DTO_Resposta> RemoverTipoEmpresa(int id)
     {
@@ -35,7 +35,7 @@ public class TipoEmpresaController : ControllerBase
         resposta = await _tipoEmpresa.RemoverTipoEmpresa(id);
         return resposta;
     }
-
+    
     [HttpGet("ListarTiposEmpresas")]
     public DTO_Resposta ListarTiposEmpresas()
     {

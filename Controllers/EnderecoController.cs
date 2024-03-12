@@ -17,14 +17,14 @@ public class EnderecoController : ControllerBase
         _logger = logger;
         _endereco = endereco;
     }
-
+    [AllowAnonymous]
     [HttpPost("AdicionarEndereco")]
     public DTO_Resposta AdicionarEndereco(DTO_Endereco endereco)
     {
         var resposta = _endereco.CadastrarEndereco(endereco);
         return resposta;
     }
-
+    [AllowAnonymous]
     [HttpGet("Visualizarenderecos")]
     public DTO_Resposta VisualizarEnderecos()
     {

@@ -47,7 +47,7 @@ public class FuncionarioController : ControllerBase
         resposta = _funcionario.PesquisarFuncionario(consulta);
         return resposta;
     }
-
+    [Authorize("SerAgente")]
     [HttpPost("AssociarFuncionarioEmpresa")]
     public DTO_Resposta AssociarFuncionarEmpresa(int funcionarioid, int empresaid, int cargoid)
     {

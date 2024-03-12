@@ -19,7 +19,7 @@ public class RegimeController : ControllerBase
         _logger = logger;
         _regime = regime;
     }
-    [Authorize("RequiredClaims")]
+    [Authorize("SerAgente")]
     [HttpPost("CriarRegime")]
     public async Task<DTO_Resposta> CriarRegime(DTO_Regime regime)
     {
@@ -27,7 +27,7 @@ public class RegimeController : ControllerBase
         resposta = await _regime.CadastrarRegime(regime);
         return resposta;
     }
-    [Authorize("RequiredClaims")]
+    [Authorize("SerAgente")]
     [HttpDelete("ApagarRegime")]
     public async Task<DTO_Resposta> ApagarRegime(int id)
     {
@@ -35,7 +35,7 @@ public class RegimeController : ControllerBase
         resposta = await _regime.RemoverRegime(id);
         return resposta;
     }
-    [Authorize("RequiredClaims")]
+    [Authorize("SerAgente")]
     [HttpPut("AtualizarRegime")]
     public async Task<DTO_Resposta> AtualizarRegime(DTO_Regime regime, int id)
     {
