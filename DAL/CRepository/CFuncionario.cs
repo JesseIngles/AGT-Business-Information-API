@@ -43,9 +43,30 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
-        public Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
+        public async Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
         {
-            throw new NotImplementedException();
+                DTO_Resposta resposta = new DTO_Resposta();
+            try 
+            {
+                var FuncionarioExistentes = _db.TbFuncionario.First(f => f.Id == id);
+                if (FuncionarioExistentes != null)
+                {
+                    FuncionaioExistentes.Nif = funcionario.Nif;
+                    FuncionarioExistentes.PrimeiroNome = funcionario.PrimeiroNome;
+                    await _db.SaveChangesAsync();
+                    resposta.mensagem = "Sucesso";
+                    return resposta; 
+                }
+                  resposta.mensagem = "Dados invalidos";
+            }
+
+                  catch(System.Exception ex)
+                  { 
+                       resposta.mensagem = ex.ToString();
+                  }
+                  return resposta;
+           }
+         
         }
 
         public async Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
@@ -120,6 +141,6 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
     }
-}
+
 
 
