@@ -11,11 +11,11 @@ namespace CrudEmpresas.Entities
         [Column("pais")]
         public string Pais {get;set;}
         [Column("provincia")]
-        public int Provincia {get;set;}
+        public string Provincia {get;set;}
         [Column("municipio")]
         public string Municipio {get;set;}
         [Column("bairro")]
-        public int Bairro {get;set;}
+        public string Bairro {get;set;}
         [Column("rua")]
         public string Rua {get;set;}
         [Column("ncasa")]

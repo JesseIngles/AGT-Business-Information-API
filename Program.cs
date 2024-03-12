@@ -84,9 +84,13 @@ builder.Services.AddCors(
 builder.Services.AddAuthorization(
     options =>
     {
-        options.AddPolicy("RequiredClaims", policy =>
+        options.AddPolicy("SerAgente", policy =>
         {
             policy.RequireClaim("Senha");
+        });
+        options.AddPolicy("SerAgenteAdmin", policy =>
+        {
+            policy.RequireClaim("IsAdmin");
         });
     }
 );

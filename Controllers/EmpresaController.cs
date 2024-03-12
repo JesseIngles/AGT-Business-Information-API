@@ -44,7 +44,7 @@ public class EmpresaController : ControllerBase
         return resposta;
     }
 
-    [AllowAnonymous]
+    [Authorize("Re")]
     [HttpDelete("RemoverEmpresa")]
     public async Task<DTO_Resposta> RemoverEmpresa(int id)
     {
