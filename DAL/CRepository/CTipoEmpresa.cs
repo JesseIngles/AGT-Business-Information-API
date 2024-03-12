@@ -42,6 +42,21 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
+        public DTO_Resposta ListarTiposEmpresas()
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                resposta.resposta = _db.TbTipoEmpresa.ToList();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+
         public async Task<DTO_Resposta> RemoverTipoEmpresa(int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();

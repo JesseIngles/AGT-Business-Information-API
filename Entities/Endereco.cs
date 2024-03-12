@@ -4,20 +4,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CrudEmpresas.Entities
 {
     [Table("endereco")]
-    public class endereco{
+    public class Endereco
+    {
         [Column("id")]
-        public int id {get;set;}
+        public int Id {get;set;}
         [Column("pais")]
-        public string pais {get;set;}
+        public string Pais {get;set;}
         [Column("provincia")]
-        public int provincia {get;set;}
+        public int Provincia {get;set;}
         [Column("municipio")]
-        public string municipio {get;set;}
+        public string Municipio {get;set;}
         [Column("bairro")]
-        public int bairro {get;set;}
+        public int Bairro {get;set;}
         [Column("rua")]
-        public string rua {get;set;}
+        public string Rua {get;set;}
         [Column("ncasa")]
-        public int ncasa {get;set;}
+        public int Ncasa {get;set;}
     }
 }

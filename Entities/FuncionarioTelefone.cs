@@ -5,13 +5,13 @@ namespace CrudEmpresas.Entities
 {
 
     [Table("funcionariotelefone")]
-    public class funcionariotelefone
+    public class FuncionarioTelefone
     {
         [Column("id")]
-        public int id { get; set; }
-        [Column("ddd")]
-        public string ddd { get; set; }
+        public int Id { get; set; }
         [Column("telefone")]
-        public int telefone { get; set; }
+        public string Telefone { get; set; }
+        [Column("funcionarioid")]
+        public int FuncionarioId {get;set;}
     }
 }

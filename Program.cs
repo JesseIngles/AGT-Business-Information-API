@@ -1,3 +1,4 @@
+using System.Text;
 using CrudEmpresas.DAL.CRepository;
 using CrudEmpresas.DAL.Database;
 using CrudEmpresas.DAL.IRepository;
@@ -7,7 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+//var key = Encoding.ASCII.GetBytes("tngcaixeilmcpnyzkkvowbzhgckdgmlapitltvfmmhoenpbeuwnzqzeyhzbgraucbbndvqnnaixbqsykhefdmvlkvgxfshlexzdaggrxxcvwbvscobwvwsrjsdtaaqxx");
 
+var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]));
 // Add services to the container.
 builder.Services.AddTransient<MyDbContext>();
 builder.Services.AddTransient<IEmpresa, CEmpresa>();
@@ -17,6 +20,7 @@ builder.Services.AddTransient<IRegime, CRegime>();
 builder.Services.AddTransient<ISectorEconomico, CSectorEconomico>();
 builder.Services.AddTransient<ITipoEmpresa, CTipoEmpresa>();
 builder.Services.AddTransient<IAtividadeEconomica, CAtividadeEconomica>();
+builder.Services.AddTransient<IEndereco, CEndereco>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -24,7 +28,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CRUD_EMPRESAS", Version = "v1" });
-    // Adicionar o campo para inserir o token
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Insira o token JWT",
@@ -67,11 +70,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-/*builder.Services.AddCors(
-    options => 
-);*/
+builder.Services.AddCors(
+    options => options.AddPolicy("BackOfficeAgentes",
+        builder =>
+        {
+            builder
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .SetIsOriginAllowed(origin => true)
+               .AllowCredentials();
+        })
+);
 var app = builder.Build();
-
+app.UseCors("BackOfficeAgentes");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -83,7 +94,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-/*builder.Services.AddAuthorization(
+builder.Services.AddAuthorization(
     options =>
     {
         options.AddPolicy("RequiredClaims", policy =>
@@ -91,7 +102,7 @@ app.UseAuthorization();
             policy.RequireClaim("Senha");
         });
     }
-);*/
+);
 app.MapControllers();
 
 app.Run();

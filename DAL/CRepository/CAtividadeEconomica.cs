@@ -21,8 +21,8 @@ namespace CrudEmpresas.DAL.CRepository
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var AtividadeEconomicaExistente = _db.TbActividadeEconomica.First(a => a.Id == id); 
-                if(AtividadeEconomicaExistente != null)
+                var AtividadeEconomicaExistente = _db.TbActividadeEconomica.First(a => a.Id == id);
+                if (AtividadeEconomicaExistente == null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
@@ -47,7 +47,7 @@ namespace CrudEmpresas.DAL.CRepository
                 {
                     Nome = atividadeEconomica.Nome
                 };
-                if(NovaAtividadeEconomica!=null)
+                if (NovaAtividadeEconomica == null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
@@ -55,6 +55,21 @@ namespace CrudEmpresas.DAL.CRepository
                 _db.TbActividadeEconomica.Add(NovaAtividadeEconomica);
                 await _db.SaveChangesAsync();
                 resposta.mensagem = "Criado com sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+
+        public async Task<DTO_Resposta> TodasAtividadesEconomicas()
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                resposta.resposta = await _db.TbActividadeEconomica.ToListAsync();
+                resposta.mensagem = "Sucesso";
             }
             catch (System.Exception ex)
             {

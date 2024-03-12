@@ -2,10 +2,12 @@ using CrudEmpresas.DAL.IRepository;
 using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrudEmpresas.Controllers;
 
+[EnableCors("BackOfficeAgentes")]
 [ApiController]
 [Route("[controller]/v1/")]
 public class EmpresaController : ControllerBase
@@ -17,7 +19,7 @@ public class EmpresaController : ControllerBase
         _logger = logger;
         _empresa = empresa;
     }
-    //[Authorize("RequiredClaims")]
+    [Authorize("RequiredClaims")]
     [HttpPost("CriarEmpresa")]
     public async Task<DTO_Resposta> CriarEmpresa(DTO_Empresa empresa)
     {
@@ -25,7 +27,7 @@ public class EmpresaController : ControllerBase
         resposta = await _empresa.CadastrarEmpresa(empresa);
         return resposta;
     }
-
+    [Authorize("RequiredClaims")]
     [HttpPut("AtualizarEmpresa")]
     public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
     {

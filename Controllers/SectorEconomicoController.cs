@@ -1,10 +1,13 @@
 using CrudEmpresas.DAL.IRepository;
 using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrudEmpresas.Controllers;
 
+[EnableCors("BackOfficeAgentes")]
 [ApiController]
 [Route("[controller]/v1/")]
 public class SectorEconomicoController : ControllerBase
@@ -16,7 +19,7 @@ public class SectorEconomicoController : ControllerBase
         _logger = logger;
         _sectorEconomico = sectorEconomico;
     }
-
+    [Authorize("RequiredClaims")]
     [HttpPost("CriarSectorEconomico")]
     public async Task<DTO_Resposta> CriarSectorEconomico(DTO_SectorEconomico sectorEconomico)
     {
@@ -24,7 +27,7 @@ public class SectorEconomicoController : ControllerBase
         resposta = await _sectorEconomico.CadastrarSectorEconomico(sectorEconomico);
         return resposta;
     }
-
+    [Authorize("RequiredClaims")]
     [HttpGet("ListarSectoresEconomicos")]
     public async Task<DTO_Resposta> PegarSectoresEconomicos()
     {

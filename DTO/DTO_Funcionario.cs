@@ -9,8 +9,8 @@ namespace CrudEmpresas.DTO
         public string CV  { get; set; }
         public string Foto { get; set; }
         public bool Ativo { get; set; }
-        public List<string> Emails {get;set;}
-        public List<string> Telefones {get;set;}
+        public List<string>? Emails {get;set;}
+        public List<string>? Telefones {get;set;}
 
     }
 }

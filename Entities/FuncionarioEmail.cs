@@ -10,5 +10,7 @@ namespace CrudEmpresas.Entities
         public int Id {get;set;}
         [Column("email")]
         public string Email {get;set;}
+        [Column("funcionarioid")]
+        public int FuncionarioId {get;set;}
     }
 }

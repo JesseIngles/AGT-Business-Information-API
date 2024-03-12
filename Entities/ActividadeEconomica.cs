@@ -1,14 +1,14 @@
- using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CrudEmpresas.Entities
 {
 
-    [Table("actividadeeconomica")]
-    public class ActividadeEconomica 
+    [Table("atividadeeconomica")]
+    public class ActividadeEconomica
     {
         [Column("id")]
-        public int Id {get;set;}
+        public int Id { get; set; }
         [Column("nome")]
-        public string Nome {get;set;}
+        public string Nome { get; set; }
     }
 }

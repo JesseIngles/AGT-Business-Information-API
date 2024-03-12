@@ -9,4 +9,5 @@ public interface IAgente
     DTO_Resposta LogarAgente(DTO_Login login);
     Task<DTO_Resposta> AtualizarAgente(DTO_Agente agente, int id);
     Task<DTO_Resposta> RemoverAgente(int id);
+    DTO_Resposta TodosAgentes();
 }

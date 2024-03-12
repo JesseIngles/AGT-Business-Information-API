@@ -22,7 +22,7 @@ namespace CrudEmpresas.DAL.CRepository
             try
             {
                 var regimeExistente = _db.TbRegime.First(r => r.Id == id);
-                if(regimeExistente == null)
+                if (regimeExistente == null)
                 {
                     resposta.mensagem = "Não existe";
                     return resposta;
@@ -43,7 +43,7 @@ namespace CrudEmpresas.DAL.CRepository
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                if(regime== null)
+                if (regime == null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
@@ -69,7 +69,7 @@ namespace CrudEmpresas.DAL.CRepository
             try
             {
                 var regimeExistente = _db.TbRegime.First(r => r.Id == id);
-                if(regimeExistente == null)
+                if (regimeExistente == null)
                 {
                     resposta.mensagem = "Não existe";
                     return resposta;
@@ -84,28 +84,42 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
+
+        public DTO_Resposta TodosRegimes()
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                resposta.resposta = _db.TbRegime.ToList();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
     }
 }
 
-       
-                
-      
 
 
-                
-                
-           
-         
-    
-
-                     
-                         
-                   
-                                                                           
-  
 
 
-            
-                      
 
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

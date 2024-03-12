@@ -15,6 +15,7 @@ namespace CrudEmpresas.DAL.CRepository
         {
             _db = context;
         }
+        //Atualiza o registro do id especificado com a informações passadas no objecto empresa
         public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
         {
             DTO_Resposta resposta = new DTO_Resposta();
@@ -42,7 +43,7 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
-
+        //Cadastra uma empresa com base nas informações provinientes do DTO_Empresa
         public async Task<DTO_Resposta> CadastrarEmpresa(DTO_Empresa empresa)
         {
             DTO_Resposta resposta = new DTO_Resposta();
@@ -103,15 +104,28 @@ namespace CrudEmpresas.DAL.CRepository
             return resposta;
         }
 
+        //Pesquisa um empresa usando um algoritmo de pesquisa, denominado Fuzz Sharp
         public DTO_Resposta PesquisarEmpresa(string consulta)
         {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
                 var EmpresasExistentes = _db.TbEmpresa.ToList();
-                var Empresas = EmpresasExistentes.Select(e => new { empresa = e, Pontuacao = Fuzz.PartialRatio(consulta.ToLower(), e.Firma.ToLower())
-                                            + Fuzz.PartialRatio(consulta.ToLower(), e.Nif.ToLower())});
-                resposta.resposta = Empresas.Where(x => x.Pontuacao >= 60);
+                var Empresas = EmpresasExistentes.Select(e => new
+                {
+                    empresa = e,
+                    Pontuacao = Fuzz.PartialRatio(consulta.ToLower(), e.Firma.ToLower())
+                                            + Fuzz.PartialRatio(consulta.ToLower(), e.Nif.ToLower())
+                });
+                //resposta.resposta = Empresas.Where(x => x.Pontuacao >= 60);
+                resposta.resposta = from e in Empresas 
+                                    where e.Pontuacao >= 60
+                                    select new 
+                                    {
+                                        Nome = e.empresa.Firma,
+                                        Nif = e.empresa.Nif,
+                                        Logotipo = e.empresa.Logotipo
+                                    };
                 resposta.mensagem = "Sucesso";
             }
             catch (System.Exception ex)
@@ -152,17 +166,18 @@ namespace CrudEmpresas.DAL.CRepository
                     foreach (var email in emails)
                     {
                         _db.TbEmailEmpresa.Remove(email);
-                        await _db.SaveChangesAsync();
                     }
-                    var telefones = _db.TbTelefoneEmpresa.Where(e => e.EmpresaId == empresaExistente.Id);
+                    await _db.SaveChangesAsync();
+                    var telefones = await _db.TbTelefoneEmpresa.Where(e => e.EmpresaId == empresaExistente.Id).ToListAsync();
                     foreach (var telefone in telefones)
                     {
                         _db.TbTelefoneEmpresa.Remove(telefone);
-                        await _db.SaveChangesAsync();
                     }
+                    _db.SaveChanges();
                     _db.TbEmpresa.Remove(empresaExistente);
                     await _db.SaveChangesAsync();
                     resposta.mensagem = "Sucesso";
+                    return resposta;
                 }
                 resposta.mensagem = "Não existe";
             }

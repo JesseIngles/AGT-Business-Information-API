@@ -107,7 +107,11 @@ namespace CrudEmpresas.DAL.CRepository
                 {
                     AgenteExistente.Ativo = true;
                     _db.SaveChanges();
-                    resposta.resposta = JwtService.GerarTokenAgente();
+                    var configuration = new ConfigurationBuilder()
+                                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                                        .Build();
+
+                    resposta.resposta = JwtService.GerarTokenAgente(AgenteExistente, configuration);
                     resposta.mensagem = "Sucesso";
                     return resposta;
                 }
@@ -131,23 +135,44 @@ namespace CrudEmpresas.DAL.CRepository
                     resposta.mensagem = "Não existe";
                     return resposta;
                 }
-                    var emails = _db.TbAgenteEmail.Where(e => e.AgenteId == agenteExistente.Id);
-                    foreach (var email in emails)
-                    {
-                        _db.TbAgenteEmail.Remove(email);
-                        await _db.SaveChangesAsync();
-                    }
-                    var telefones = _db.TbAgenteTelefone.Where(e => e.AgenteId == agenteExistente.Id);
-                    foreach (var telefone in telefones)
-                    {
-                        _db.TbAgenteTelefone.Remove(telefone);
-                        await _db.SaveChangesAsync();
-                    }
-                    _db.TbAgente.Remove(agenteExistente);
+                var emails = _db.TbAgenteEmail.Where(e => e.AgenteId == agenteExistente.Id);
+                foreach (var email in emails)
+                {
+                    _db.TbAgenteEmail.Remove(email);
                     await _db.SaveChangesAsync();
-                    resposta.mensagem = "Sucesso";
+                }
+                var telefones = _db.TbAgenteTelefone.Where(e => e.AgenteId == agenteExistente.Id);
+                foreach (var telefone in telefones)
+                {
+                    _db.TbAgenteTelefone.Remove(telefone);
+                    await _db.SaveChangesAsync();
+                }
                 _db.TbAgente.Remove(agenteExistente);
                 await _db.SaveChangesAsync();
+                resposta.mensagem = "Sucesso";
+                _db.TbAgente.Remove(agenteExistente);
+                await _db.SaveChangesAsync();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+
+        public DTO_Resposta TodosAgentes()
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                resposta.resposta = from a in _db.TbAgente.ToList()
+                                    select new
+                                    {
+                                        Nome = a.Nome,
+                                        Ativo = a.Ativo,
+                                        IsAdmin = a.IsAdmin
+                                    };
                 resposta.mensagem = "Sucesso";
             }
             catch (System.Exception ex)

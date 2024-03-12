@@ -7,9 +7,11 @@ using CrudEmpresas.DTO;
 using CrudEmpresas.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace CrudEmpresas.Controllers;
 
+[EnableCors("BackOfficeAgentes")]
 [ApiController]
 [Route("[controller]/v1/")]
 public class FuncionarioController : ControllerBase

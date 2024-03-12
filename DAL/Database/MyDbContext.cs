@@ -21,6 +21,8 @@ public class MyDbContext : DbContext
     public DbSet<SectorEconomico> TbSectorEconomico {get;set;}
     public DbSet<TipoEmpresa> TbTipoEmpresa {get;set;}
     public DbSet<Cargo> TbCargo {get;set;}
+    public DbSet<Endereco> TbEndereco {get;set;}
+    public DbSet<FuncionarioTelefone> TbFuncionarioTelefone {get;set;}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql("HOST=localhost; port=5434;Username=postgres; Database=EmpresaDb;password=1234");
 
