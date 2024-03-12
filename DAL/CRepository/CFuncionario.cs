@@ -16,24 +16,51 @@ namespace CrudEmpresas.DAL.CRepository
             _db = context;
         }
 
+        public DTO_Resposta AssociarFuncionarioEmpresa(int funcionarioid, int empresaid, int cargoid)
+        {
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var Associacao = new EmpresaFuncionario
+                {
+                    FuncionarioId = funcionarioid,
+                    EmpresaId = empresaid,
+                    CargoId = cargoid
+                };
+                if (Associacao != null)
+                {
+                    resposta.mensagem = "Dados inválidos";
+                    return resposta;
+                }
+                _db.TbEmpresaFuncionario.Add(Associacao);
+                _db.SaveChanges();
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+
         public Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
         {
             throw new NotImplementedException();
         }
 
         public async Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
-        {  
-           
+        {
+
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
                 var NovoFuncionario = new Funcionario
                 {
-                   PrimeiroNome = funcionario.PrimeiroNome,
-                   UltimoNome = funcionario.UltimoNome,
-                   CV = funcionario.CV,
-                   Nif = funcionario.Nif,
-                   Foto = funcionario.Foto 
+                    PrimeiroNome = funcionario.PrimeiroNome,
+                    UltimoNome = funcionario.UltimoNome,
+                    CV = funcionario.CV,
+                    Nif = funcionario.Nif,
+                    Foto = funcionario.Foto
                 };
                 if (NovoFuncionario == null)
                 {
@@ -83,7 +110,7 @@ namespace CrudEmpresas.DAL.CRepository
             try
             {
                 var FuncionarioExistentes = _db.TbFuncionario.ToList();
-                resposta.resposta = FuncionarioExistentes.Select(e => new { Funcionario = e, Pontuacao = Fuzz.PartialRatio( consulta, e.UltimoNome) }); 
+                resposta.resposta = FuncionarioExistentes.Select(e => new { Funcionario = e, Pontuacao = Fuzz.PartialRatio(consulta, e.UltimoNome) });
                 resposta.mensagem = "Sucesso";
             }
             catch (System.Exception ex)
@@ -92,8 +119,7 @@ namespace CrudEmpresas.DAL.CRepository
             }
             return resposta;
         }
-        }
     }
-          
+}
 
-            
+

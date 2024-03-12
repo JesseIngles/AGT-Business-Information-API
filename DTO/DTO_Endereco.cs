@@ -8,6 +8,6 @@ namespace CrudEmpresas.DTO
         public string municipio { get; set; }
         public string bairro { get; set; }
         public string rua { get; set; }
-        public int ncasa { get; set; }
+        public string ncasa { get; set; }
     }
 }

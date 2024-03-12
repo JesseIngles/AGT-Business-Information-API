@@ -19,6 +19,6 @@ namespace CrudEmpresas.Entities
         [Column("rua")]
         public string Rua {get;set;}
         [Column("ncasa")]
-        public int Ncasa {get;set;}
+        public string Ncasa {get;set;}
     }
 }
