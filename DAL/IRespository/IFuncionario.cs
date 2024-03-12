@@ -9,4 +9,5 @@ public interface IFuncionario
     Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id);
     Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario);
     DTO_Resposta PesquisarFuncionario(string consulta);
+    DTO_Resposta RemoverFuncionario(int id);
 }
