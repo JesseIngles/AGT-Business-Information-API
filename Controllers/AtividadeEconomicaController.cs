@@ -19,7 +19,7 @@ public class AtividadeEconomicaController : ControllerBase
         _logger = logger;
         _atividadeeconomica = AtividadeEconomica;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPost("CriarAtividadeEconomica")]
     public async Task<DTO_Resposta> AdicionarAtividadeEconomica(DTO_AtividadeEconomica atividadeEconomica)
     {
@@ -27,7 +27,7 @@ public class AtividadeEconomicaController : ControllerBase
         resposta = await _atividadeeconomica.CadastrarAtividadeEconomica(atividadeEconomica);
         return resposta;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPut("AtualizarAtividadeEconomica")]
     public async Task<DTO_Resposta> AtualizarAtividadeEconomica(DTO_AtividadeEconomica atividadeEconomica, int id)
     {

@@ -8,16 +8,17 @@ namespace CrudEmpresas.Services;
 
 public class JwtService
 {
-    public static string GerarTokenAgente(Agente agente, IConfiguration configuration)
+    /*private readonly SymmetricSecurityKey _key;
+    public JwtService(SymmetricSecurityKey key)
     {
-        var jwtKey = configuration["Jwt:Key"];
-        var jwtIssuer = configuration["Jwt:Issuer"];
-        var jwtAudience = configuration["Jwt:Audience"];
-
+        _key = key;
+    }
+    public static string GerarTokenAgente(Agente agente)
+    {
         // Pad the key to ensure it meets the required length
-        var paddedKey = jwtKey.PadRight(32, '0'); // Assuming 32 bytes (256 bits) is required
+        //var paddedKey = jwtKey.PadRight(32, '0'); // Assuming 32 bytes (256 bits) is required
 
-        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(paddedKey));
+        //var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(paddedKey));
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, agente.Nome),
@@ -30,13 +31,13 @@ public class JwtService
             claims[claims.Length - 1] = new Claim("IsAdmin", agente.IsAdmin.ToString());
         }
         var token = new JwtSecurityToken(
-                issuer: jwtIssuer,
-                audience: jwtAudience,
+                issuer: "CRUDEmpresas",
+                audience: "CRUDEmpresas",
                 claims: claims,
                 expires: DateTime.UtcNow.AddDays(180),
                 signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
         );
         return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+    }*/
 
 }

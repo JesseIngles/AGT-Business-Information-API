@@ -35,7 +35,7 @@ public class AgenteController : ControllerBase
         resposta = _agente.LogarAgente(login);
         return resposta;
     }
-    [Authorize("SerAgenteAdmin")]
+    //[Authorize("SerAgenteAdmin")]
     [HttpDelete("RemoverAgente")]
     public async Task<DTO_Resposta> RemoverAgenter(int id)
     {
@@ -43,7 +43,7 @@ public class AgenteController : ControllerBase
         resposta = await _agente.RemoverAgente(id);
         return resposta;
     }
-    [Authorize("SerAgenteAdmin")]
+    //[Authorize("SerAgenteAdmin")]
     [HttpGet("ListarAgentes")]
     public DTO_Resposta VisualizarAgentes()
     {

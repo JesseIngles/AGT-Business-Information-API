@@ -19,7 +19,7 @@ public class SectorEconomicoController : ControllerBase
         _logger = logger;
         _sectorEconomico = sectorEconomico;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPost("CriarSectorEconomico")]
     public async Task<DTO_Resposta> CriarSectorEconomico(DTO_SectorEconomico sectorEconomico)
     {

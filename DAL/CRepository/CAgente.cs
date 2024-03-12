@@ -107,11 +107,12 @@ namespace CrudEmpresas.DAL.CRepository
                 {
                     AgenteExistente.Ativo = true;
                     _db.SaveChanges();
-                    var configuration = new ConfigurationBuilder()
+                    /*var configuration = new ConfigurationBuilder()
                                         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                                         .Build();
 
-                    resposta.resposta = JwtService.GerarTokenAgente(AgenteExistente, configuration);
+                    
+                    resposta.resposta = JwtService.GerarTokenAgente(AgenteExistente, configuration);*/
                     resposta.mensagem = "Sucesso";
                     return resposta;
                 }

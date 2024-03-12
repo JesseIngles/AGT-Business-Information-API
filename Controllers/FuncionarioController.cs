@@ -31,7 +31,7 @@ public class FuncionarioController : ControllerBase
         resposta = await _funcionario.CadastrarFuncionario(funcionario);
         return resposta;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPut("AtualizarFuncionario")]
     public async Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
     {
@@ -47,7 +47,7 @@ public class FuncionarioController : ControllerBase
         resposta = _funcionario.PesquisarFuncionario(consulta);
         return resposta;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPost("AssociarFuncionarioEmpresa")]
     public DTO_Resposta AssociarFuncionarEmpresa(int funcionarioid, int empresaid, int cargoid)
     {

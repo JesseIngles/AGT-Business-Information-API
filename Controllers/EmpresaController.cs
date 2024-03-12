@@ -19,7 +19,7 @@ public class EmpresaController : ControllerBase
         _logger = logger;
         _empresa = empresa;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPost("CriarEmpresa")]
     public async Task<DTO_Resposta> CriarEmpresa(DTO_Empresa empresa)
     {
@@ -27,7 +27,7 @@ public class EmpresaController : ControllerBase
         resposta = await _empresa.CadastrarEmpresa(empresa);
         return resposta;
     }
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpPut("AtualizarEmpresa")]
     public async Task<DTO_Resposta> AtualizarEmpresa(DTO_Empresa empresa, int id)
     {
@@ -44,7 +44,7 @@ public class EmpresaController : ControllerBase
         return resposta;
     }
 
-    [Authorize("SerAgente")]
+    //[Authorize("SerAgente")]
     [HttpDelete("RemoverEmpresa")]
     public async Task<DTO_Resposta> RemoverEmpresa(int id)
     {
