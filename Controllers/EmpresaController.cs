@@ -19,7 +19,7 @@ public class EmpresaController : ControllerBase
         _logger = logger;
         _empresa = empresa;
     }
-    [Authorize("RequiredClaims")]
+    //[Authorize("RequiredClaims")]
     [HttpPost("CriarEmpresa")]
     public async Task<DTO_Resposta> CriarEmpresa(DTO_Empresa empresa)
     {

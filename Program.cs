@@ -81,6 +81,15 @@ builder.Services.AddCors(
                .AllowCredentials();
         })
 );
+builder.Services.AddAuthorization(
+    options =>
+    {
+        options.AddPolicy("RequiredClaims", policy =>
+        {
+            policy.RequireClaim("Senha");
+        });
+    }
+);
 var app = builder.Build();
 app.UseCors("BackOfficeAgentes");
 
@@ -94,15 +103,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-builder.Services.AddAuthorization(
-    options =>
-    {
-        options.AddPolicy("RequiredClaims", policy =>
-        {
-            policy.RequireClaim("Senha");
-        });
-    }
-);
+
 app.MapControllers();
 
 app.Run();
