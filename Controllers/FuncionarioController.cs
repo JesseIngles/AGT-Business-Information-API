@@ -25,10 +25,10 @@ public class FuncionarioController : ControllerBase
     }
     //[Authorize("SerAgente")]
     [HttpPost("AdicionarFuncionario")]
-    public DTO_Resposta CadastrarFuncionario(DTO_Funcionario funcionario)
+    public async Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
     {
         DTO_Resposta resposta = new DTO_Resposta();
-        resposta =  _funcionario.CadastrarFuncionario(funcionario);
+        resposta = await _funcionario.CadastrarFuncionario(funcionario);
         return resposta;
     }
     //[Authorize("SerAgente")]
@@ -39,9 +39,8 @@ public class FuncionarioController : ControllerBase
         resposta = await _funcionario.AtualizarFuncionario(funcionario, id);
         return resposta;
     }
-    [AllowAnonymous]
     [HttpGet("PesquisarFuncionario")]
-    public DTO_Resposta PesquisarFuncionario(string consulta)
+     public DTO_Resposta PesquisarFuncionario(string consulta)
     {
         DTO_Resposta resposta = new DTO_Resposta();
         resposta = _funcionario.PesquisarFuncionario(consulta);

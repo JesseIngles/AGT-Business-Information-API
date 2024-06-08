@@ -18,47 +18,84 @@ namespace CrudEmpresas.DAL.CRepository
 
         public DTO_Resposta AssociarFuncionarioEmpresa(int funcionarioid, int empresaid, int cargoid)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DTO_Resposta CadastrarFuncionario(DTO_Funcionario funcionario)
-        {
             DTO_Resposta resposta = new DTO_Resposta();
             try
             {
-                var Novofuncionario = new Funcionario
+                var Associacao = new EmpresaFuncionario
                 {
-                    PrimeiroNome = funcionario.PrimeiroNome,
-                    UltimoNome = funcionario.UltimoNome,
-                    Nif = funcionario.Nif,
-                    CV = funcionario.CV,
-                    Foto = funcionario.Foto
+                    FuncionarioId = funcionarioid,
+                    EmpresaId = empresaid,
+                    CargoId = cargoid
                 };
-                if(Novofuncionario==null)
+                if (Associacao != null)
                 {
                     resposta.mensagem = "Dados inválidos";
                     return resposta;
                 }
-                _db.TbFuncionario.Add(Novofuncionario);
+                _db.TbEmpresaFuncionario.Add(Associacao);
                 _db.SaveChanges();
-                if(funcionario.Emails != null)
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
+        }
+
+        public async Task<DTO_Resposta> AtualizarFuncionario(DTO_Funcionario funcionario, int id)
+        {
+             throw new NotImplementedException();
+        }
+
+        public async Task<DTO_Resposta> CadastrarFuncionario(DTO_Funcionario funcionario)
+        {
+
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var NovoFuncionario = new Funcionario
                 {
-                    foreach(var item in funcionario.Emails)
+                    PrimeiroNome = funcionario.PrimeiroNome,
+                    UltimoNome = funcionario.UltimoNome,
+                    CV = funcionario.CV,
+                    Nif = funcionario.Nif,
+                    Foto = funcionario.Foto
+                };
+                if (NovoFuncionario == null)
+                {
+                    resposta.mensagem = "Dados inválidos";
+                    return resposta;
+                }
+                _db.TbFuncionario.Add(NovoFuncionario);
+                await _db.SaveChangesAsync();
+                if (funcionario.Emails != null)
+                {
+                    foreach (var item in funcionario.Emails)
                     {
-                        var NovoEmail = new FuncionarioEmail
+                        var novoEmail = new FuncionarioEmail
                         {
                             Email = item,
-                            FuncionarioId = _db.TbFuncionario.First(x => x.Nif == funcionario.Nif).Id
+                            FuncionarioId = _db.TbFuncionario.First(e => e.Nif == NovoFuncionario.Nif).Id
                         };
-                        _db.TbFuncionarioEmail.Add(NovoEmail);
+                        await _db.TbFuncionarioEmail.AddAsync(novoEmail);
                         _db.SaveChanges();
                     }
                 }
+                if (funcionario.Telefones != null)
+                {
+                    foreach (var item in funcionario.Telefones)
+                    {
+                        var novoTelefone = new FuncionarioTelefone
+                        {
+                            Telefone = item,
+                            FuncionarioId = _db.TbEmpresa.First(e => e.Nif == NovoFuncionario.Nif).Id
+                        };
+                        await _db.TbFuncionarioTelefone.AddAsync(novoTelefone);
+                        _db.SaveChanges();
+                    }
+                }
+                resposta.mensagem = "Sucesso";
             }
             catch (System.Exception ex)
             {
@@ -69,7 +106,22 @@ namespace CrudEmpresas.DAL.CRepository
 
         public DTO_Resposta PesquisarFuncionario(string consulta)
         {
-            throw new NotImplementedException();
+            DTO_Resposta resposta = new DTO_Resposta();
+            try
+            {
+                var FuncionarioExistentes = _db.TbFuncionario.ToList();
+                var pesquisa = FuncionarioExistentes.Select(e => new { Funcionario = e, 
+                Pontuacao = Fuzz.PartialRatio(consulta, e.UltimoNome) +
+                Fuzz.PartialRatio(consulta, e.PrimeiroNome)+
+                Fuzz.PartialRatio(consulta, e.Nif)});
+                resposta.resposta = pesquisa.Where(u => u.Pontuacao>=60);
+                resposta.mensagem = "Sucesso";
+            }
+            catch (System.Exception ex)
+            {
+                resposta.mensagem = ex.ToString();
+            }
+            return resposta;
         }
 
         public DTO_Resposta RemoverFuncionario(int id)
@@ -78,5 +130,3 @@ namespace CrudEmpresas.DAL.CRepository
         }
     }
 }
-
-
